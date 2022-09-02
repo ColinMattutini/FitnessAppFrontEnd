@@ -6,6 +6,7 @@ const CalorieTrackerForm = (props) => {
     const [foodInput, setFoodInput] = useState('');
     const [calorieInput, setCalorieInput] = useState('');
     const [dateInput, setDateInput] = useState('');
+    const [error, setError] = useState(null);
 
     const foodInputIsValid = foodInput !== '';
     const calorieInputIsValid = calorieInput !== '';
@@ -30,12 +31,40 @@ const CalorieTrackerForm = (props) => {
 
     const formSubmitHandler = (event) => {
         event.preventDefault();
+        enterFoodHandler(foodInput, calorieInput, dateInput);
         console.log(foodInput, calorieInput, dateInput);
         setFoodInput('');
         setCalorieInput('');
         setDateInput('');
     };
 
+
+    const enterFoodHandler = 
+        async (foodInput, calorieInput, dateInput) => {
+            try{
+                const response = await fetch(
+                    'https://calorie-fitness-tracker-default-rtdb.firebaseio.com/foodItem.json',
+                    {
+                        method: 'POST',
+                        body: JSON.stringify({
+                            foodItem: foodInput,
+                            calories: calorieInput,
+                            date: dateInput
+                        }),
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                    }
+                );
+                if(!response.ok){
+                    throw new Error('Request Failed');
+                }
+                const data = await response.json();
+                const generatedId = data.name;
+            } catch (err) {
+                setError(err.message || 'Something went wrong');
+            };
+    };
 
     return(
         <form onSubmit={formSubmitHandler}>
