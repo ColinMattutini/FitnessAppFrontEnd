@@ -1,0 +1,12 @@
+.homepage {
+    display: flex;
+    align-items: center;
+    padding: 4rem;
+    max-width: 28rem;
+    margin-right: auto;
+    margin-top: 8rem;
+    height: 40rem;
+    background-color: #72c2f7;
+    border-color: black;
+
+}
