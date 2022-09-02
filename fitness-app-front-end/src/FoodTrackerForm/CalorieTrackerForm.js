@@ -43,7 +43,7 @@ const CalorieTrackerForm = (props) => {
         async (foodInput, calorieInput, dateInput) => {
             try{
                 const response = await fetch(
-                    'https://calorie-fitness-tracker-default-rtdb.firebaseio.com/foodItem.json',
+                    
                     {
                         method: 'POST',
                         body: JSON.stringify({
