@@ -3,8 +3,24 @@
     
 }
 
-.trackerForm input {
-    display: flex;
-    flex-direction: column;
-    
+.trackerForm label {
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+    display: block;
+  }
+  
+  .trackerForm input {
+    font: inherit;
+    padding: 0.5rem;
+    margin-bottom: 1.25rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    width: 20rem;
+    max-width: 100%;
+  }
+
+.button {
+    cursor: pointer;
+    background-color: #f8f8f8;
+    margin-top: 0.5rem;
 }

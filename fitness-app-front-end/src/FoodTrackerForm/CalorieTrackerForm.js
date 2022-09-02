@@ -27,7 +27,7 @@ const CalorieTrackerForm = (props) => {
         console.log(foodInput, calorieInput);
         setFoodInput('');
         setCalorieInput('');
-    }
+    };
 
 
     return(
@@ -46,10 +46,17 @@ const CalorieTrackerForm = (props) => {
                 value={calorieInput}
                 onChange={calorieInputHandler}
             />
-            </div>
-            <button disabled={!formIsValid}>Submit</button>
-            
+            <label htmlFor='date'>Enter Date</label>
+            <input 
+                type='date'
 
+
+            />
+            </div>
+            <button className={classes.button}
+            disabled={!formIsValid}
+            >Submit</button>
+        
         </form>
 
     );
