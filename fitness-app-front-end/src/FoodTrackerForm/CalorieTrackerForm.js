@@ -5,12 +5,14 @@ const CalorieTrackerForm = (props) => {
 
     const [foodInput, setFoodInput] = useState('');
     const [calorieInput, setCalorieInput] = useState('');
+    const [dateInput, setDateInput] = useState('');
 
     const foodInputIsValid = foodInput !== '';
     const calorieInputIsValid = calorieInput !== '';
+    const dateInputIsValid = dateInput !== '';
 
     let formIsValid = false;
-    if(foodInputIsValid && calorieInputIsValid){
+    if(foodInputIsValid && calorieInputIsValid && dateInputIsValid){
         formIsValid = true;
     };
 
@@ -22,11 +24,16 @@ const CalorieTrackerForm = (props) => {
         setCalorieInput(event.target.value);
     };
 
+    const dateInputHandler = (event) => {
+        setDateInput(event.target.value);
+    }
+
     const formSubmitHandler = (event) => {
         event.preventDefault();
-        console.log(foodInput, calorieInput);
+        console.log(foodInput, calorieInput, dateInput);
         setFoodInput('');
         setCalorieInput('');
+        setDateInput('');
     };
 
 
@@ -49,8 +56,8 @@ const CalorieTrackerForm = (props) => {
             <label htmlFor='date'>Enter Date</label>
             <input 
                 type='date'
-
-
+                value={dateInput}
+                onChange={dateInputHandler}
             />
             </div>
             <button className={classes.button}
