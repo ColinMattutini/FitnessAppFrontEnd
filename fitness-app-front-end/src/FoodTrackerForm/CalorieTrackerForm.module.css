@@ -1,0 +1,10 @@
+.trackerForm {
+    font-size: large;
+    
+}
+
+.trackerForm input {
+    display: flex;
+    flex-direction: column;
+    
+}

@@ -1,8 +1,9 @@
-
+import classes from './CalorieTrackerForm.module.css';
 
 const CalorieTrackerForm = (props) => {
     return(
         <form>
+            <div className={classes.trackerForm}>
             <label htmlFor='foodItem'>Enter Food Here</label>
             <input 
                 type='text'
@@ -13,6 +14,7 @@ const CalorieTrackerForm = (props) => {
                 type='text'
 
             />
+            </div>
 
         </form>
 
