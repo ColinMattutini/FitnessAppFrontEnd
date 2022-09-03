@@ -4,7 +4,7 @@ import Homepage from './Homepage/Homepage.js';
 function App() {
   return (
     <div>
-      <Header />
+      <Header />   
       <Homepage />
     </div>
 
