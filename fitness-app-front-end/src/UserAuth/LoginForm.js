@@ -1,8 +1,10 @@
 import Modal from '../UI/Modal';
 import classes from './LoginForm.module.css';
-import { useState } from 'react'; 
+import { useState, useContext } from 'react'; 
+import AuthContext from '../context/user-auth';
 
 const LoginForm = (props) => {
+    const authCtx = useContext(AuthContext);
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -21,6 +23,35 @@ const LoginForm = (props) => {
         setEmail('');
         setPassword('');
         props.hideLoginForm();
+
+        fetch(, 
+        {
+            method: 'POST',
+            body: JSON.stringify({
+                email: email,
+                password: password,
+                returnSecureToken: true
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        
+        ).then(res => {
+            if(res.ok){
+                console.log('Login Worked')
+            } else{
+                return res.json().then(data => {
+                    let errorMessage = 'Authentication failed.';
+                    alert(errorMessage)
+                })
+            }
+        }).then(data => {
+            authCtx.login(data.idToken);
+        });
+
+
+
     };
 
     return (
