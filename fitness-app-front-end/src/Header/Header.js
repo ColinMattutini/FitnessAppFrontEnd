@@ -1,13 +1,14 @@
-import react from 'react';
+import React from 'react';
 import classes from './Header.module.css';
+import LoginButton from '../UI/LoginButton';
 
-const Header = () => {
+const Header = (props) => {
 
     return(
         <div>
         <header className={classes.header}>
                 <p>Hello</p>
-                <button>Sign In</button>
+                <LoginButton onClick={props.showLoginForm} />
         </header>
         </div>
 

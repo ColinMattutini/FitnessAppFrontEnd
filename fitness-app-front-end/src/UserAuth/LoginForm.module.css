@@ -1,0 +1,13 @@
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form label {
+    text-align: left;
+    font-size: 12px;
+}
+
+.form input {
+    max-width: 16rem;
+}
