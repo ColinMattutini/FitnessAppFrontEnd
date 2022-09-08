@@ -1,8 +1,9 @@
 import React from "react";
+import classes from './LoginButton.module.css';
 
 const LoginButton = props => {
     return(
-       <div>
+       <div className={classes.button}>
             <button onClick={props.onClick}>{props.value}</button>
        </div> 
     )

@@ -15,7 +15,8 @@
   }
 
   .header button {
-
+    display: flex;
+    justify-content: center;
     background-color: red;
     width: 10rem;
     margin-right: 24rem;
