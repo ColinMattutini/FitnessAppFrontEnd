@@ -3,6 +3,7 @@ import CalorieTrackerForm from '../FoodTrackerForm/CalorieTrackerForm';
 import classes from './Homepage.module.css';
 import { useContext } from 'react';
 import AuthContext from '../../context/user-auth';
+import Food from './Food.js';
 
 const Homepage = (props) => {
 
@@ -27,24 +28,41 @@ const Homepage = (props) => {
         // authCtx.userInfo(data.users.localId);
         
         authCtx.id(data.users[0].localId);
+        console.log('Tracking userInfo Function')
         
     })
 };
 
-useEffect(() => {
-  userInfo();
-}, [])
+  // if(authCtx.UUID === null){
+  //   userInfo();
+  // };
+
+
+// useEffect(() => {
+//   if(authCtx.token !== 'null'){
+//   userInfo();
+// }
+// })
 
 
     return(
       <Fragment>
         
         <div className={classes.homepage}>
+          <div className={classes.calorieSheet}>
           <h1>
               Track Food and Calories Here
           </h1>
+          
           <CalorieTrackerForm />
-        </div>  
+          </div>
+          <Food />
+        </div> 
+          
+         
+        
+          
+        
       </Fragment>
     );
 

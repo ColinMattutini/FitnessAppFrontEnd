@@ -1,0 +1,11 @@
+.listing {
+    display: flex;
+    padding: 4rem;
+    width: 90%;
+    max-width: 54rem;
+    margin-top: 34rem;
+    margin-right: 12rem;
+    max-height: 14rem;
+    background: yellow;
+    
+}

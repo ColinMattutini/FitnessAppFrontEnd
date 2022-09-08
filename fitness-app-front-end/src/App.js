@@ -23,7 +23,8 @@ function App() {
   return (
     <div>
       <Header showLoginForm={showModalHandler}/>   
-      {authCtx.isLoggedIn && <Homepage />}
+      {/* {authCtx.isLoggedIn && <Homepage />} */}
+      <Homepage />
       {showModal && <LoginForm hideLoginForm={hideModalHandler}/>}
     </div>
 
