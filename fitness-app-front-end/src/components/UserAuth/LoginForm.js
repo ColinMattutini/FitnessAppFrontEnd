@@ -6,25 +6,7 @@ import AuthContext from '../../context/user-auth.js'
 const LoginForm = (props) => {
     const authCtx = useContext(AuthContext);
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-
-    const emailHandler = (event) => {
-        setEmail(event.target.value);
-    };
-
-    const passwordHandler = (event) => {
-        setPassword(event.target.value);
-    };
-
-    const submitHandler = (event) => {
-        event.preventDefault();
-        console.log(email, password);
-        // setEmail('');
-        // setPassword('');
-        props.hideLoginForm();
-
-        fetch('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDp4Tq7CcT5TUe1a5pPDBjUlly9zE-K6dM', 
+    const userValidation = () => fetch('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDp4Tq7CcT5TUe1a5pPDBjUlly9zE-K6dM', 
         {
             method: "POST",
             body: JSON.stringify({
@@ -58,11 +40,8 @@ const LoginForm = (props) => {
               .catch(error => {
                   alert('Something went wrong');
             });
-    };
 
-    
-
-    useEffect(() => {
+    const userInfo =() => {
         fetch('https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyDp4Tq7CcT5TUe1a5pPDBjUlly9zE-K6dM',
         {
             method: 'POST',
@@ -81,8 +60,33 @@ const LoginForm = (props) => {
             // authCtx.userInfo(data.users.localId);
             
             authCtx.id(data.users[0].localId);
-        });
-    }, [authCtx.token])
+            console.log(authCtx.token);
+        })
+    };
+
+   
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const emailHandler = (event) => {
+        setEmail(event.target.value);
+    };
+
+    const passwordHandler = (event) => {
+        setPassword(event.target.value);
+    };
+
+    const submitHandler = (event) => {
+        event.preventDefault();
+        console.log(email, password);
+        // setEmail('');
+        // setPassword('');
+        userValidation();
+        // userInfo();
+        props.hideLoginForm();
+    
+    };
 
     return (
         <Modal>
