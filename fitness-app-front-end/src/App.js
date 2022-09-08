@@ -1,10 +1,14 @@
-import Header from './Header/Header.js';
-import Homepage from './Homepage/Homepage.js';
-import LoginForm from './UserAuth/LoginForm.js';
+import Header from './components/Header/Header.js';
+import Homepage from './components/Homepage/Homepage.js';
+import LoginForm from './components/UserAuth/LoginForm.js';
 import { useState } from 'react';
+import { useContext } from 'react';
+import AuthContext from './context/user-auth.js';
+
 
 function App() {
 
+  const authCtx = useContext(AuthContext);
   const [showModal, setShowModal] = useState(false);
 
   const showModalHandler = () => {
@@ -19,7 +23,7 @@ function App() {
   return (
     <div>
       <Header showLoginForm={showModalHandler}/>   
-      <Homepage />
+      {authCtx.isLoggedIn && <Homepage />}
       {showModal && <LoginForm hideLoginForm={hideModalHandler}/>}
     </div>
 

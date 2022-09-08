@@ -1,8 +1,10 @@
 import classes from './CalorieTrackerForm.module.css';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import AuthContext from '../../context/user-auth.js';
 
-const CalorieTrackerForm = (props) => {
+const CalorieTrackerForm = () => {
 
+    const authCtx = useContext(AuthContext);
     const [foodInput, setFoodInput] = useState('');
     const [calorieInput, setCalorieInput] = useState('');
     const [dateInput, setDateInput] = useState('');
@@ -28,9 +30,11 @@ const CalorieTrackerForm = (props) => {
     const dateInputHandler = (event) => {
         setDateInput(event.target.value);
     }
+    
 
     const formSubmitHandler = (event) => {
         event.preventDefault();
+        
         enterFoodHandler(foodInput, calorieInput, dateInput);
         console.log(foodInput, calorieInput, dateInput);
         setFoodInput('');
@@ -43,10 +47,11 @@ const CalorieTrackerForm = (props) => {
         async (foodInput, calorieInput, dateInput) => {
             try{
                 const response = await fetch(
-                    
+                    'https://calorie-fitness-tracker-default-rtdb.firebaseio.com/foodItem.json',
                     {
                         method: 'POST',
                         body: JSON.stringify({
+                            userId: authCtx.UUID,
                             foodItem: foodInput,
                             calories: calorieInput,
                             date: dateInput
@@ -60,7 +65,7 @@ const CalorieTrackerForm = (props) => {
                     throw new Error('Request Failed');
                 }
                 const data = await response.json();
-                const generatedId = data.name;
+                // const generatedId = data.name;
             } catch (err) {
                 setError(err.message || 'Something went wrong');
             };
