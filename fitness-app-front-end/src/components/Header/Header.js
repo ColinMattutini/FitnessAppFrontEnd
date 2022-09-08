@@ -9,7 +9,7 @@ const Header = (props) => {
         <div>
         <header className={classes.header}>
                 <p>Hello</p>
-                <LoginButton onClick={props.showLoginForm} />
+                <LoginButton onClick={props.showLoginForm} value='Login'/>
         </header>
         </div>
 
