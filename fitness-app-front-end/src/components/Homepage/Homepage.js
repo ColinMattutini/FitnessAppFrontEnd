@@ -33,16 +33,14 @@ const Homepage = (props) => {
     })
 };
 
-  // if(authCtx.UUID === null){
-  //   userInfo();
-  // };
+  
 
 
-// useEffect(() => {
-//   if(authCtx.token !== 'null'){
-//   userInfo();
-// }
-// })
+useEffect(() => {
+  if(authCtx.UUID === null && authCtx.isLoggedIn){
+    userInfo();
+  };
+});
 
 
     return(

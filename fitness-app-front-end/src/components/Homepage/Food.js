@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import classes from './Food.module.css';
 import FoodListing from './FoodListing.js';
 import { useState, useEffect } from "react";
 import Card from "../UI/Card";
+import AuthContext from "../../context/user-auth";
 
 const Food = () => {
+
+    const authCtx = useContext(AuthContext);
 
     const [food, setFood] = useState([]);
     const [error, setError] = useState(null);
@@ -22,14 +25,16 @@ const Food = () => {
         const data = await response.json();
 
         const loadedFood = [];
+        
         for(const foodKey in data){
+            if(authCtx.UUID === data[foodKey].userId){
             loadedFood.push({
                 id: foodKey,
                 food: data[foodKey].foodItem,
                 calories: data[foodKey].calories,
                 date: data[foodKey].date
             });
-        }
+        }};
             setFood(loadedFood);
             console.log(food.toString());
             // console.log('Success');
@@ -39,8 +44,11 @@ const Food = () => {
 };
 
     useEffect(() => {
-        fetchFood();   
-    }, []);
+        if(authCtx.isLoggedIn){
+            fetchFood();
+       }
+    }, [authCtx.UUID]);
+    
 
     const foodList = food.map((foods) =>
     <FoodListing 
