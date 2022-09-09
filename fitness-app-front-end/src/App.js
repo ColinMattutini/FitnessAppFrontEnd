@@ -4,8 +4,6 @@ import LoginForm from './components/UserAuth/LoginForm.js';
 import { useState } from 'react';
 import { useContext } from 'react';
 import AuthContext from './context/user-auth.js';
-import Food from './components/Homepage/Food.js';
-
 
 function App() {
 
@@ -24,8 +22,8 @@ function App() {
   return (
     <div>
       <Header showLoginForm={showModalHandler}/>   
-      {/* {authCtx.isLoggedIn && <Homepage />} */}
-      <Homepage />
+      {authCtx.isLoggedIn && <Homepage />}
+      
       {showModal && <LoginForm hideLoginForm={hideModalHandler}/>}
       
     </div>
