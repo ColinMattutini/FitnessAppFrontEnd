@@ -4,6 +4,7 @@ import LoginForm from './components/UserAuth/LoginForm.js';
 import { useState } from 'react';
 import { useContext } from 'react';
 import AuthContext from './context/user-auth.js';
+import DonutChart from './components/Charts/DonutChart.js';
 
 function App() {
 
@@ -25,7 +26,7 @@ function App() {
       {authCtx.isLoggedIn && <Homepage />}
       
       {showModal && <LoginForm hideLoginForm={hideModalHandler}/>}
-      
+      <DonutChart />
     </div>
 
   );
