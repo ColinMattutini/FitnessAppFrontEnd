@@ -2,6 +2,7 @@ import React from "react";
 import classes from './Food.module.css';
 import FoodListing from './FoodListing.js';
 import { useState, useEffect } from "react";
+import Card from "../UI/Card";
 
 const Food = () => {
 
@@ -54,12 +55,14 @@ const Food = () => {
     
 
     return(
-        <div className={classes.listing}>
+    <Card>
+        <section className={classes.food}>
             <ul>
                 {foodList}
             </ul>
             
-        </div>
+        </section>
+    </Card>
 
     );
 

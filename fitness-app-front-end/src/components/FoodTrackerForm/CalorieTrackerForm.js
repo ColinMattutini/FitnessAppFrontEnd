@@ -72,6 +72,7 @@ const CalorieTrackerForm = () => {
     };
 
     return(
+        
         <form onSubmit={formSubmitHandler}>
             <div className={classes.trackerForm}>
             <label htmlFor='foodItem'>Enter Food Here</label>

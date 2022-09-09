@@ -56,9 +56,11 @@ const Homepage = (props) => {
           
           <CalorieTrackerForm />
           </div>
+          
+        </div> 
+        <div className={classes.foodListing}>
           <Food />
         </div> 
-          
          
         
           
