@@ -12,18 +12,20 @@
     max-width: 28rem;
     margin-left: 4rem;
     margin-top: 8rem;
-    height: 40rem;
+    height: 41.5rem;
     border-radius: 14px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
     background-color: #72c2f7;
 }
 
-.foodListing{
+
+
+/* .foodListing{
     margin-left: 34rem;
     margin-top: 30%;
     max-width: 75rem;
     
-}
+} */
 
 .homepage h1{
     margin-left: auto;

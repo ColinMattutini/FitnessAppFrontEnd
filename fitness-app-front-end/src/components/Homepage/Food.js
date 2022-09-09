@@ -1,9 +1,10 @@
-import React, { useContext } from "react";
+import React, { Fragment, useContext } from "react";
 import classes from './Food.module.css';
 import FoodListing from './FoodListing.js';
 import { useState, useEffect } from "react";
 import Card from "../UI/Card";
 import AuthContext from "../../context/user-auth";
+import DonutChart from "../Charts/DonutChart";
 
 const Food = () => {
 
@@ -63,14 +64,20 @@ const Food = () => {
     
 
     return(
+    <Fragment>
+    <div className={classes.donutChart}>
+    <DonutChart />
+    </div>
     <Card>
         <section className={classes.food}>
+        
             <ul>
                 {foodList}
             </ul>
             
         </section>
     </Card>
+    </Fragment>
 
     );
 

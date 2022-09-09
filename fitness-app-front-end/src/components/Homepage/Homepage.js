@@ -4,6 +4,7 @@ import classes from './Homepage.module.css';
 import { useContext } from 'react';
 import AuthContext from '../../context/user-auth';
 import Food from './Food.js';
+import DonutChart from '../Charts/DonutChart';
 
 const Homepage = (props) => {
 
@@ -47,6 +48,7 @@ useEffect(() => {
       <Fragment>
         
         <div className={classes.homepage}>
+          
           <div className={classes.calorieSheet}>
           <h1>
               Track Food and Calories Here

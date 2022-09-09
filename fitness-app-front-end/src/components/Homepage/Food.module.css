@@ -19,8 +19,11 @@
     
     overflow: scroll;
     scrollbar-width: none;
-    background-image: none;    
+    background-image: none;
+        
   }
+
+
   .food::-webkit-scrollbar{
     display: none;
   }
@@ -32,3 +35,8 @@
     overflow: hidden;
   }
 
+  .donutChart{
+    /* margin-bottom: 4rem; */
+    margin-left: 45%;
+    margin-top: 6rem;
+  }

@@ -26,7 +26,7 @@ function App() {
       {authCtx.isLoggedIn && <Homepage />}
       
       {showModal && <LoginForm hideLoginForm={hideModalHandler}/>}
-      <DonutChart />
+      {/* <DonutChart /> */}
     </div>
 
   );
