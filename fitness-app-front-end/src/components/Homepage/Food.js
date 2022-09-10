@@ -61,15 +61,6 @@ const Food = () => {
     />
     );
 
-    // const donutChart = food.map((foods) => 
-         
-    //         calories={foods.calories}
-        
-    // );
-
-    
-    
-
     return(
     <Fragment>
     <div className={classes.donutChart}>

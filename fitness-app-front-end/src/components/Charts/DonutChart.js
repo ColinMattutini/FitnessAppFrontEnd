@@ -1,5 +1,4 @@
 import React from 'react';
-import { useEffect } from 'react';
 import classes from './DonutChart.module.css';
 import { PieChart, Pie, Tooltip, Cell } from 'recharts'; 
 
@@ -14,16 +13,19 @@ const DonutChart = (props) => {
     // ];
 
     const calorieCount = [];
+    let totalCalories = 0;
     
     
     for(const i in props.foodArray){
-        console.log(props.foodArray[i].calories)
+        // console.log(props.foodArray[i].calories)
+        totalCalories += (+props.foodArray[i].calories);
         calorieCount.push({
             id: props.foodArray[i].key,
             calories: +props.foodArray[i].calories
             
         });
     };
+    console.log(totalCalories);
     
     const CustomTooltip = ({active, payload, label}) => {
         if(active) {

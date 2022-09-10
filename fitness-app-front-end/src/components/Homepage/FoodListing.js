@@ -1,4 +1,5 @@
 import React from "react";
+import LoginButton from "../UI/LoginButton";
 import classes from './FoodListing.module.css';
 
 const FoodListing = (props) => {
@@ -14,7 +15,7 @@ const FoodListing = (props) => {
                 <div className={classes.calories}>
                     {props.calories}
                 </div> 
-                <button>Test</button>
+                <LoginButton value={'Delete'}/>
             </div>
             
         </li>
