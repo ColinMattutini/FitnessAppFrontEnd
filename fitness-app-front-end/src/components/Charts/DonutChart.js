@@ -1,15 +1,29 @@
 import React from 'react';
+import { useEffect } from 'react';
 import classes from './DonutChart.module.css';
 import { PieChart, Pie, Tooltip, Cell } from 'recharts'; 
 
-const DonutChart = () => {
+
+const DonutChart = (props) => {
 
     const COLORS = ["#8884d8", "#82ca9d"];
 
-    const data = [
-        {name: 'Test', students: 40},
-        {name: 'Test2', students: 80}
-    ];
+    // const data = [
+    //     {name: 'Test', students: 40},
+    //     {name: 'Test2', students: 80}
+    // ];
+
+    const calorieCount = [];
+    
+    
+    for(const i in props.foodArray){
+        console.log(props.foodArray[i].calories)
+        calorieCount.push({
+            id: props.foodArray[i].key,
+            calories: +props.foodArray[i].calories
+            
+        });
+    };
     
     const CustomTooltip = ({active, payload, label}) => {
         if(active) {
@@ -21,24 +35,25 @@ const DonutChart = () => {
                     border: "1px solid #cccc"
                 }}
                 >
-                    <label>{`${payload[0].name} : ${payload[0].value}`}</label>
+                    <label>{`${payload[0].id} : ${payload[0].value}`}</label>
                 </div>
             );
         }
         return null;
     };
 
+
     return(
         <div className={classes.donutChart}>
         <PieChart width={500} height={500}>
             <Pie 
-            data={data}
-            dataKey="students"
+            data={calorieCount}
+            dataKey="calories"
             outerRadius={200}
             innerRadius={120}
             fill="blue">
 
-            {data.map((entry, index) => (
+            {calorieCount.map((entry, index) => (
                 <Cell 
                 key={`cell-${index}`}
                 fill={COLORS[index % COLORS.length]}

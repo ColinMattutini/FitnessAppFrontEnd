@@ -14,6 +14,7 @@ const FoodListing = (props) => {
                 <div className={classes.calories}>
                     {props.calories}
                 </div> 
+                <button>Test</button>
             </div>
             
         </li>

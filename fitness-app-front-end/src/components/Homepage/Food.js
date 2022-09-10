@@ -59,14 +59,22 @@ const Food = () => {
         calories={foods.calories}
         date={foods.date}
     />
-
     );
+
+    // const donutChart = food.map((foods) => 
+         
+    //         calories={foods.calories}
+        
+    // );
+
+    
     
 
     return(
     <Fragment>
     <div className={classes.donutChart}>
-    <DonutChart />
+        <DonutChart foodArray={food}/>
+        
     </div>
     <Card>
         <section className={classes.food}>
