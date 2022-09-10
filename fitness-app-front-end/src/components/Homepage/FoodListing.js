@@ -3,6 +3,23 @@ import LoginButton from "../UI/LoginButton";
 import classes from './FoodListing.module.css';
 
 const FoodListing = (props) => {
+
+    //Add method req for DELETE to function
+    const fetchDeleteFood = async (foodItem) => {
+        try{
+            const response = await fetch(
+                'https://calorie-fitness-tracker-default-rtdb.firebaseio.com/foodItem.json'
+            );
+        } catch(error){
+            //Add error catch here
+        }
+    }; 
+
+    const deleteHandler = (event) => {
+        console.log('Delete Button Clicked');
+    };
+
+
     return(
         <li className={classes.food}>
             <div>
@@ -15,7 +32,10 @@ const FoodListing = (props) => {
                 <div className={classes.calories}>
                     {props.calories}
                 </div> 
-                <LoginButton value={'Delete'}/>
+                <LoginButton 
+                    value={'Delete'}
+                    onClick={deleteHandler}
+                />
             </div>
             
         </li>
