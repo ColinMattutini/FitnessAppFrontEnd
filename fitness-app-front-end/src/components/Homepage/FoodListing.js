@@ -8,7 +8,14 @@ const FoodListing = (props) => {
     const fetchDeleteFood = async (foodItem) => {
         try{
             const response = await fetch(
-                'https://calorie-fitness-tracker-default-rtdb.firebaseio.com/foodItem.json'
+                'https://calorie-fitness-tracker-default-rtdb.firebaseio.com/foodItem/'+props.id+'.json',
+                {
+                    method: 'DELETE',
+                    body: JSON.stringify({
+                        id: props.id
+                    }),
+                    headers: {'Content-Type': 'application/json'}
+                }
             );
         } catch(error){
             //Add error catch here
@@ -16,6 +23,7 @@ const FoodListing = (props) => {
     }; 
 
     const deleteHandler = (event) => {
+        fetchDeleteFood(props.id);
         console.log('Delete Button Clicked');
     };
 
