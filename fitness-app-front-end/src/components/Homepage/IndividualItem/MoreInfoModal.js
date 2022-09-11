@@ -1,4 +1,5 @@
 import React from "react";
+import LoginButton from "../../UI/LoginButton";
 import Modal from "../../UI/Modal";
 
 const MoreInfoModal = (props) => {
@@ -11,7 +12,10 @@ const MoreInfoModal = (props) => {
             <input 
                 type='date'
                 defaultValue={props.date}
-                
+            />
+            <LoginButton 
+                value='Close' 
+                onClick={props.hideModalHandler}    
             />
         </Modal>
 

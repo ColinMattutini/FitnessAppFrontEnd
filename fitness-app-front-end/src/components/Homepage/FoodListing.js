@@ -35,6 +35,10 @@ const FoodListing = (props) => {
         setShowModal(true);
     }
 
+    const hideModalHandler = () => {
+        setShowModal(false);
+    };
+
     return(
         <Fragment>
         {showModal && 
@@ -43,6 +47,7 @@ const FoodListing = (props) => {
             food={props.food}
             calories={props.calories}
             date={props.date}
+            hideModalHandler={hideModalHandler}
         />}
         <li className={classes.food}>
             <div>
@@ -62,6 +67,7 @@ const FoodListing = (props) => {
                 <LoginButton 
                     value={'More Info'}
                     onClick={showModalHandler}
+                    
                 />
             </div>
             
