@@ -46,10 +46,10 @@ const Food = () => {
 };
 
     useEffect(() => {
-        if(authCtx.isLoggedIn && authCtx.updatedState > 0){
+        if(authCtx.UUID !== null && authCtx.updatedState > 0){
             fetchFood();
             authCtx.updatedStateHandler(0);
-            //authCtx.updatedStateHandler(0);
+            
        }
     }, [authCtx.UUID, authCtx.updatedState]);
     

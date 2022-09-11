@@ -6,7 +6,8 @@ import AuthContext from '../../context/user-auth.js'
 const LoginForm = (props) => {
     const authCtx = useContext(AuthContext);
 
-    const userValidation = () => fetch('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDp4Tq7CcT5TUe1a5pPDBjUlly9zE-K6dM', 
+    const userValidation = () => fetch
+    ('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDp4Tq7CcT5TUe1a5pPDBjUlly9zE-K6dM', 
         {
             method: "POST",
             body: JSON.stringify({
@@ -35,7 +36,7 @@ const LoginForm = (props) => {
               }
             }).then(data => {
               authCtx.login(data.idToken);
-              console.log(authCtx.token);
+             
             })
               .catch(error => {
                   alert('Something went wrong');
@@ -62,6 +63,7 @@ const LoginForm = (props) => {
         // setEmail('');
         // setPassword('');
         userValidation();
+        
         // userInfo();
         props.hideLoginForm();
     

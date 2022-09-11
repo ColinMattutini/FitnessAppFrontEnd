@@ -18,7 +18,8 @@ const MoreInfoModal = (props) => {
 
 
     const updateItemFetch = async (calories) => {
-        fetch(
+        try{
+        await fetch(
             'https://calorie-fitness-tracker-default-rtdb.firebaseio.com/foodItem/'+props.id+'.json',
             {
                 method: "PUT",
@@ -36,6 +37,10 @@ const MoreInfoModal = (props) => {
         
             )
             authCtx.updatedStateHandler(10);
+        }catch(error){
+            console.log("something went wrong");
+        }
+            
     }
 
     const onSubmitUpdateHandler = (event) => {

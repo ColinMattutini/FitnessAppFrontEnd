@@ -16,7 +16,7 @@ export const AuthContextProvider = (props) => {
 
     const [token, setToken] = useState(null);
     const [UUID, setUUID] = useState(null);
-    const [updatedState, setUpdatedState] = useState(0);
+    const [updatedState, setUpdatedState] = useState(1);
     const userIsLoggedIn = !!token;
 
     const loginHandler = (token) => {
