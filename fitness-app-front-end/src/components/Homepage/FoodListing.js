@@ -1,10 +1,14 @@
-import React from "react";
+import React, { Fragment } from "react";
 import LoginButton from "../UI/LoginButton";
 import classes from './FoodListing.module.css';
+import { useState } from "react";
+import MoreInfoModal from "./IndividualItem/MoreInfoModal";
 
 const FoodListing = (props) => {
 
-    //Add method req for DELETE to function
+    const [showModal, setShowModal] = useState(false);
+
+    //Needs thorough testing
     const fetchDeleteFood = async (foodItem) => {
         try{
             const response = await fetch(
@@ -27,8 +31,13 @@ const FoodListing = (props) => {
         console.log('Delete Button Clicked');
     };
 
+    const showModalHandler = () => {
+        setShowModal(true);
+    }
 
     return(
+        <Fragment>
+        {showModal && <MoreInfoModal />}
         <li className={classes.food}>
             <div>
                 <h3>
@@ -44,9 +53,14 @@ const FoodListing = (props) => {
                     value={'Delete'}
                     onClick={deleteHandler}
                 />
+                <LoginButton 
+                    value={'More Info'}
+                    onClick={showModalHandler}
+                />
             </div>
             
         </li>
+        </Fragment>
     )
 
 };
