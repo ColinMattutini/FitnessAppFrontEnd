@@ -18,7 +18,6 @@ const Food = () => {
     try{
         const response = await fetch(
         'https://calorie-fitness-tracker-default-rtdb.firebaseio.com/foodItem.json' 
-            
         );
         if(!response.ok) {
             throw new Error ('Get Request Failed.');
