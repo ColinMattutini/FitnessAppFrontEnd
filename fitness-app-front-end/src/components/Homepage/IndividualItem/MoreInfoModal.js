@@ -1,10 +1,12 @@
 import React from "react";
 import Modal from "../../UI/Modal";
 
-const MoreInfoModal = () => {
+const MoreInfoModal = (props) => {
     return(
         <Modal>
-            <p>Hello</p>
+            <p>{props.calories}</p>
+            <p>{props.food}</p>
+            <p>{props.date}</p>
         </Modal>
 
     )

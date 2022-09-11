@@ -12,7 +12,7 @@ const Food = () => {
 
     const [food, setFood] = useState([]);
     const [error, setError] = useState(null);
-    const [showModal, showModalHandler] = useState(false);
+   
 
     const fetchFood = async (foodItem) => {
     try{
@@ -62,9 +62,7 @@ const Food = () => {
     />
     );
 
-    const moreInfoModal = () => {
-        showModal(true);
-    }
+    
 
     return(
     <Fragment>

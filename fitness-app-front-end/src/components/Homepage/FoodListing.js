@@ -37,7 +37,13 @@ const FoodListing = (props) => {
 
     return(
         <Fragment>
-        {showModal && <MoreInfoModal />}
+        {showModal && 
+        <MoreInfoModal 
+            id={props.id}
+            food={props.food}
+            calories={props.calories}
+            date={props.date}
+        />}
         <li className={classes.food}>
             <div>
                 <h3>
