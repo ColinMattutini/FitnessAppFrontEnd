@@ -45,10 +45,10 @@ const Food = () => {
 };
 
     useEffect(() => {
-        if(authCtx.isLoggedIn){
+        if(authCtx.isLoggedIn || authCtx.updatedState > 0){
             fetchFood();
        }
-    }, [authCtx.UUID]);
+    }, [authCtx.UUID, authCtx.updatedState]);
     
 
     const foodList = food.map((foods) =>
