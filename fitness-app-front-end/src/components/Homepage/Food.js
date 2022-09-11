@@ -38,6 +38,7 @@ const Food = () => {
         }};
             setFood(loadedFood);
             console.log(food.toString());
+            
             // console.log('Success');
     } catch(err){
         setError(err.message || 'Request Failed.')
@@ -45,8 +46,10 @@ const Food = () => {
 };
 
     useEffect(() => {
-        if(authCtx.isLoggedIn || authCtx.updatedState > 0){
+        if(authCtx.isLoggedIn && authCtx.updatedState > 0){
             fetchFood();
+            authCtx.updatedStateHandler(0);
+            //authCtx.updatedStateHandler(0);
        }
     }, [authCtx.UUID, authCtx.updatedState]);
     

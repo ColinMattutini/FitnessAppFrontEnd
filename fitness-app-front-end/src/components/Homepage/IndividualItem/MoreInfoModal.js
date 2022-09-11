@@ -35,12 +35,13 @@ const MoreInfoModal = (props) => {
             }
         
             )
+            authCtx.updatedStateHandler(10);
     }
 
     const onSubmitUpdateHandler = (event) => {
         event.preventDefault();
         updateItemFetch(calories);
-        authCtx.updatedStateHandler(10);
+        
         props.hideModalHandler();
     }
 

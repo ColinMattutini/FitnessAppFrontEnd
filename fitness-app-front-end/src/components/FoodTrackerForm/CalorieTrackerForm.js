@@ -65,6 +65,7 @@ const CalorieTrackerForm = () => {
                     throw new Error('Request Failed');
                 }
                 const data = await response.json();
+                authCtx.updatedStateHandler(40);
                 // const generatedId = data.name;
             } catch (err) {
                 setError(err.message || 'Something went wrong');

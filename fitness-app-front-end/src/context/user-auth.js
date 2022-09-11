@@ -4,11 +4,11 @@ import { useState } from 'react';
 const AuthContext = React.createContext({
     token: '',
     UUID: '',
-    updatedState: 0,
+    updatedState: 1,
     isLoggedIn: false,
     login: (token) => {},
     logout: () => {},
-    updatedStateHandler: () => {}
+    updatedStateHandler: (number) => {}
 
 });
 
@@ -31,8 +31,8 @@ export const AuthContextProvider = (props) => {
         setToken(null);
     };
 
-    const updateStateHandler = () => {
-        setUpdatedState(updatedState + 1);
+    const updateStateHandler = (number) => {
+        setUpdatedState(number);
     };
 
     const contextValue = {

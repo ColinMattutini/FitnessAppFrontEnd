@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import AuthContext from '../../../context/user-auth';
 import LoginButton from '../../UI/LoginButton';
 import Modal from '../../UI/Modal';
 
 const DeleteConfirmationModal = (props) => {
+
+    const authCtx = useContext(AuthContext);
     
     const fetchDeleteFood = async (foodItem) => {
         try{
@@ -16,6 +19,7 @@ const DeleteConfirmationModal = (props) => {
                     headers: {'Content-Type': 'application/json'}
                 }
             );
+            authCtx.updatedStateHandler(20);
         } catch(error){
             //Add error catch here
         }
@@ -23,6 +27,7 @@ const DeleteConfirmationModal = (props) => {
 
     const deleteHandler = () => {
         fetchDeleteFood(props.id);
+        
         props.hideDeleteModalHandler();
         console.log('Delete Button Clicked');
     };
