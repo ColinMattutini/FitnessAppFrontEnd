@@ -3,33 +3,12 @@ import LoginButton from "../UI/LoginButton";
 import classes from './FoodListing.module.css';
 import { useState } from "react";
 import MoreInfoModal from "./IndividualItem/MoreInfoModal";
+import DeleteConfirmationModal from "./DeleteConfirmation/DeleteConfirmationModal";
 
 const FoodListing = (props) => {
 
     const [showModal, setShowModal] = useState(false);
-
-    //Needs thorough testing
-    const fetchDeleteFood = async (foodItem) => {
-        try{
-            const response = await fetch(
-                'https://calorie-fitness-tracker-default-rtdb.firebaseio.com/foodItem/'+props.id+'.json',
-                {
-                    method: 'DELETE',
-                    body: JSON.stringify({
-                        id: props.id
-                    }),
-                    headers: {'Content-Type': 'application/json'}
-                }
-            );
-        } catch(error){
-            //Add error catch here
-        }
-    }; 
-
-    const deleteHandler = (event) => {
-        fetchDeleteFood(props.id);
-        console.log('Delete Button Clicked');
-    };
+    const [showDeleteModal, setShowDeleteModal] = useState(false);
 
     const showModalHandler = () => {
         setShowModal(true);
@@ -37,6 +16,14 @@ const FoodListing = (props) => {
 
     const hideModalHandler = () => {
         setShowModal(false);
+    };
+
+    const showDeleteModalHandler = () => {
+        setShowDeleteModal(true);
+    };  
+
+    const hideDeleteModalHandler = () => {
+        setShowDeleteModal(false);
     };
 
     return(
@@ -48,6 +35,11 @@ const FoodListing = (props) => {
             calories={props.calories}
             date={props.date}
             hideModalHandler={hideModalHandler}
+        />}
+        {showDeleteModal && <DeleteConfirmationModal
+            id={props.id}
+            hideDeleteModalHandler={hideDeleteModalHandler}
+            
         />}
         <li className={classes.food}>
             <div>
@@ -62,7 +54,7 @@ const FoodListing = (props) => {
                 </div> 
                 <LoginButton 
                     value={'Delete'}
-                    onClick={deleteHandler}
+                    onClick={showDeleteModalHandler}
                 />
                 <LoginButton 
                     value={'More Info'}
