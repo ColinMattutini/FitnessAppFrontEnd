@@ -74,6 +74,7 @@ const Food = () => {
     </div>
     <Card>
         <section className={classes.food}>
+            <button>Filter</button>
         
             <ul>
                 {foodList}
