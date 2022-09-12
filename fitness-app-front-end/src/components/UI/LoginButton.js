@@ -6,7 +6,7 @@ const LoginButton = props => {
        <div className={classes.button}>
             <button onClick={props.onClick}>{props.value}</button>
        </div> 
-    )
+    );
 
 }
 

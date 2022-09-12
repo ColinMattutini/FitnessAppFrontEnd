@@ -9,11 +9,18 @@ import DateFilter from "./Filter/DateFilter";
 
 const Food = () => {
 
+    let today = new Date();
+    let dd = String(today.getDate()).padStart(2, '0');
+    let mm = String(today.getMonth() + 1).padStart(2, '0');
+    let yyyy = today.getFullYear();
+
+    today = yyyy + '-' + mm + '-' + dd;
+
     const authCtx = useContext(AuthContext);
 
     const [food, setFood] = useState([]);
     const [error, setError] = useState(null);
-    const [filteredDate, setFilteredDate] = useState('')
+    const [filteredDate, setFilteredDate] = useState(today)
     
     const filterChangerHandler = (selectedDate) => {
         setFilteredDate(selectedDate);

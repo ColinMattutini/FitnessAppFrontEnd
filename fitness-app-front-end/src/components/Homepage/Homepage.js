@@ -4,7 +4,6 @@ import classes from './Homepage.module.css';
 import { useContext } from 'react';
 import AuthContext from '../../context/user-auth';
 import Food from './Food.js';
-import DonutChart from '../Charts/DonutChart';
 
 const Homepage = (props) => {
 
@@ -26,16 +25,12 @@ const Homepage = (props) => {
             return res.json();
         }
     }).then(data => {
-        // authCtx.userInfo(data.users.localId);
         
         authCtx.id(data.users[0].localId);
         console.log('Tracking userInfo Function')
         
     })
 };
-
-  
-
 
 useEffect(() => {
   if(authCtx.UUID === null && authCtx.isLoggedIn){
@@ -61,9 +56,6 @@ useEffect(() => {
         <div className={classes.foodListing}>
           <Food />
         </div> 
-         
-        
-          
         
       </Fragment>
     );

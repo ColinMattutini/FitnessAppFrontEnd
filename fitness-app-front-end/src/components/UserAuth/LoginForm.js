@@ -42,10 +42,6 @@ const LoginForm = (props) => {
                   alert('Something went wrong');
             });
 
-    
-
-   
-
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -88,7 +84,7 @@ const LoginForm = (props) => {
             </form>
         </Modal>
 
-    )
+    );
 
 };
 

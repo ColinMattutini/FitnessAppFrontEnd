@@ -8,13 +8,15 @@ const DateFilter = (props) => {
     const dateChangeHandler = (event) => {
         props.onChangeFilter(event.target.value);
         authCtx.updatedStateHandler(90);
-        console.log(props.selected)
+        console.log(props.selected);
     };
 
     return(
         <div> 
             <label>Filter By Date</label>
-            <input type='date' value={props.selected} onChange={dateChangeHandler}/>
+            <input type='date' 
+                value={props.selected} 
+                onChange={dateChangeHandler}/>
 
         </div>
 

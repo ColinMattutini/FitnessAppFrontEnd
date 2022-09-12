@@ -14,6 +14,7 @@ const Header = (props) => {
                 <p>Hello</p>
                 <div className={classes.button}>
                 {!authCtx.isLoggedIn && <LoginButton onClick={props.showLoginForm} value='Login'/>}
+                {!authCtx.isLoggedIn && <LoginButton value='Sign-Up' onClick={props.showSignUpForm}/>}
                 {authCtx.isLoggedIn && <LoginButton value='Logout' onClick={authCtx.logout}/>}
                 </div>
         </header>

@@ -4,12 +4,13 @@ import LoginForm from './components/UserAuth/LoginForm.js';
 import { useState } from 'react';
 import { useContext } from 'react';
 import AuthContext from './context/user-auth.js';
-import DonutChart from './components/Charts/DonutChart.js';
+import SignUpForm from './components/UserAuth/SignUpForm.js';
 
 function App() {
 
   const authCtx = useContext(AuthContext);
   const [showModal, setShowModal] = useState(false);
+  const [showSignUpModal, setShowSignUpModal] = useState(false);
 
   const showModalHandler = () => {
       setShowModal(true);
@@ -19,13 +20,25 @@ function App() {
     setShowModal(false);
   };
 
+  const showSignUpForm = () => {
+    setShowSignUpModal(true);
+  };
+
+  const hideSignUpFormHandler = () => {
+    setShowSignUpModal(false);
+  }
+
 
   return (
     <div>
-      <Header showLoginForm={showModalHandler}/>   
+      <Header 
+        showLoginForm={showModalHandler}
+        showSignUpForm={showSignUpForm}  
+      />   
       {authCtx.isLoggedIn && <Homepage />}
       
       {showModal && <LoginForm hideLoginForm={hideModalHandler}/>}
+      {showSignUpModal && <SignUpForm hideSignUpForm={hideSignUpFormHandler}/>}
       {/* <DonutChart /> */}
     </div>
 
