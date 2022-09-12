@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import Card from "../UI/Card";
 import AuthContext from "../../context/user-auth";
 import DonutChart from "../Charts/DonutChart";
+import DateFilter from "./Filter/DateFilter";
 
 const Food = () => {
 
@@ -12,7 +13,12 @@ const Food = () => {
 
     const [food, setFood] = useState([]);
     const [error, setError] = useState(null);
-   
+    const [filteredDate, setFilteredDate] = useState('')
+    
+    const filterChangerHandler = (selectedDate) => {
+        setFilteredDate(selectedDate);
+    }
+
 
     const fetchFood = async (foodItem) => {
     try{
@@ -28,7 +34,7 @@ const Food = () => {
         const loadedFood = [];
         
         for(const foodKey in data){
-            if(authCtx.UUID === data[foodKey].userId){
+            if(authCtx.UUID === data[foodKey].userId && filteredDate === data[foodKey].date){
             loadedFood.push({
                 id: foodKey,
                 food: data[foodKey].foodItem,
@@ -74,8 +80,10 @@ const Food = () => {
     </div>
     <Card>
         <section className={classes.food}>
-            <button>Filter</button>
-        
+            <DateFilter 
+                selected={filteredDate}
+                onChangeFilter={filterChangerHandler}
+            />
             <ul>
                 {foodList}
             </ul>
