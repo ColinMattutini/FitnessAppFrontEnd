@@ -6,7 +6,7 @@ const TotalCaloriesGoal = () => {
         <label>Calories Daily Goal</label>
         <input />
     </div>
-    )
+    );
 };
 
 export default TotalCaloriesGoal;

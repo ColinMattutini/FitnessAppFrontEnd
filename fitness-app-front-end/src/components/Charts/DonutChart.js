@@ -27,6 +27,12 @@ const DonutChart = (props) => {
         });
     };
     console.log(totalCalories);
+    let calorieGoal = 2400 - totalCalories;
+    let calorieDifference = [
+        {'calories': calorieGoal}, 
+        {'calories': totalCalories}
+    ];
+
     
     const CustomTooltip = ({active, payload, label}) => {
         if(active) {
@@ -50,7 +56,7 @@ const DonutChart = (props) => {
         <div className={classes.donutChart}>
         <PieChart width={500} height={500}>
             <Pie 
-            data={calorieCount}
+            data={calorieDifference}
             dataKey="calories"
             outerRadius={200}
             innerRadius={120}
@@ -72,7 +78,7 @@ const DonutChart = (props) => {
         <div className={classes.label}>
             <TotalCaloriesGoal />
         </div>
-        </div>
+    </div>
 
     );
 
