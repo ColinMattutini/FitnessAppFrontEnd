@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './DonutChart.module.css';
 import { PieChart, Pie, Tooltip, Cell } from 'recharts'; 
+import TotalCaloriesGoal from './TotalCaloriesGoal';
 
 
 const DonutChart = (props) => {
@@ -66,6 +67,11 @@ const DonutChart = (props) => {
             </Pie>
         <Tooltip content={<CustomTooltip />} />
         </PieChart>
+
+        
+        <div className={classes.label}>
+            <TotalCaloriesGoal />
+        </div>
         </div>
 
     );

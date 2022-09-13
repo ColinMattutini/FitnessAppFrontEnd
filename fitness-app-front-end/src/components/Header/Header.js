@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import classes from './Header.module.css';
 import LoginButton from '../UI/LoginButton';
 import { useContext } from 'react';
@@ -16,6 +16,7 @@ const Header = (props) => {
                 {!authCtx.isLoggedIn && <LoginButton onClick={props.showLoginForm} value='Login'/>}
                 {!authCtx.isLoggedIn && <LoginButton value='Sign-Up' onClick={props.showSignUpForm}/>}
                 {authCtx.isLoggedIn && <LoginButton value='Logout' onClick={authCtx.logout}/>}
+                
                 </div>
         </header>
         </div>
