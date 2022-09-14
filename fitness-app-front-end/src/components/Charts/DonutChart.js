@@ -9,7 +9,7 @@ import TotalCaloriesGoal from './TotalCaloriesGoal';
 const DonutChart = (props) => {
 
     const [dailyCalorieGoal, setCalorieGoal] = useState('');
-    const COLORS = ["#8884d8", "#82ca9d"];
+    const COLORS = ["#eb4343", "#acff75"];
 
     const calorieGoalHandler = (event) => {
         setCalorieGoal(event.target.value);
@@ -84,7 +84,7 @@ const DonutChart = (props) => {
 
         
         <div className={classes.label}>
-            <TotalCaloriesGoal />
+            {/* <TotalCaloriesGoal /> */}
             <h1> You're Total Calories For Today Is: {totalCalories}</h1>
         </div>
         

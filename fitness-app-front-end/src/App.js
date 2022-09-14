@@ -5,6 +5,9 @@ import { useState } from 'react';
 import { useContext } from 'react';
 import AuthContext from './context/user-auth.js';
 import SignUpForm from './components/UserAuth/SignUpForm.js';
+import { BrowserRouter, Route, Router, Routes } from 'react-router-dom';
+import AuthPage from './pages/AuthPage.js';
+import CalorieTrackerPage from './pages/CalorieTrackerPage.js';
 
 function App() {
 
@@ -31,7 +34,17 @@ function App() {
 
   return (
     <div>
-      <Header 
+    
+    
+      
+        <Routes>
+          <Route exact path = "/" element={<CalorieTrackerPage />} />
+          <Route exact path ="/authpage" element={<AuthPage/>} />
+        </Routes>
+      
+      
+      
+      {/* <Header 
         showLoginForm={showModalHandler}
         showSignUpForm={showSignUpForm}  
       />   
@@ -39,7 +52,7 @@ function App() {
       
       {showModal && <LoginForm hideLoginForm={hideModalHandler}/>}
       {showSignUpModal && <SignUpForm hideSignUpForm={hideSignUpFormHandler}/>}
-      {/* <DonutChart /> */}
+      <DonutChart /> */}
     </div>
 
   );

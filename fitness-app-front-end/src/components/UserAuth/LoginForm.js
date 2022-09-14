@@ -61,7 +61,7 @@ const LoginForm = (props) => {
         userValidation();
         
         // userInfo();
-        props.hideLoginForm();
+        // props.hideLoginForm();
     
     };
 
@@ -79,7 +79,7 @@ const LoginForm = (props) => {
                     onChange={passwordHandler} 
                 />                
                 <button onClick={props.onClick}>Submit</button>
-                <button onClick={props.hideLoginForm}>Close</button>
+                {/* <button onClick={props.hideLoginForm}>Close</button> */}
 
             </form>
         </Modal>
