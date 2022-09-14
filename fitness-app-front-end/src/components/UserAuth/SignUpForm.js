@@ -65,9 +65,6 @@ const SignUpForm = (props) => {
 
             };
         
-    
-
-
 
     const submitSignUpHandler = (event) => {
         event.preventDefault();

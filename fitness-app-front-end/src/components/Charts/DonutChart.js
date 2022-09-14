@@ -21,6 +21,7 @@ const DonutChart = (props) => {
     // ];
 
     const calorieCount = [];
+    const constantCalorieGoal = 2400;
     let totalCalories = 0;
     
     
@@ -34,7 +35,7 @@ const DonutChart = (props) => {
         });
     };
     console.log(totalCalories);
-    let calorieGoal = 2400 - totalCalories;
+    let calorieGoal = constantCalorieGoal - totalCalories;
     let calorieDifference = [
         {'calories': calorieGoal}, 
         {'calories': totalCalories}
@@ -84,7 +85,9 @@ const DonutChart = (props) => {
         
         <div className={classes.label}>
             <TotalCaloriesGoal />
+            <h1> You're Total Calories For Today Is: {totalCalories}</h1>
         </div>
+        
     </div>
 
     );
