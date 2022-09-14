@@ -1,4 +1,6 @@
 import React from 'react';
+// import { useRef } from 'react';
+import { useState } from 'react';
 import classes from './DonutChart.module.css';
 import { PieChart, Pie, Tooltip, Cell } from 'recharts'; 
 import TotalCaloriesGoal from './TotalCaloriesGoal';
@@ -6,7 +8,12 @@ import TotalCaloriesGoal from './TotalCaloriesGoal';
 
 const DonutChart = (props) => {
 
+    const [dailyCalorieGoal, setCalorieGoal] = useState('');
     const COLORS = ["#8884d8", "#82ca9d"];
+
+    const calorieGoalHandler = (event) => {
+        setCalorieGoal(event.target.value);
+    };
 
     // const data = [
     //     {name: 'Test', students: 40},
