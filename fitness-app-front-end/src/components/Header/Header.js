@@ -11,12 +11,13 @@ const Header = (props) => {
     return(
         <div>
         <header className={classes.header}>
-                <p>Hello</p>
+                <h1>Fitness App</h1>
                 <div className={classes.button}>
+                    <div className={classes.holder}>
                 {!authCtx.isLoggedIn && <LoginButton onClick={props.showLoginForm} value='Login'/>}
                 {!authCtx.isLoggedIn && <LoginButton value='Sign-Up' onClick={props.showSignUpForm}/>}
                 {authCtx.isLoggedIn && <LoginButton value='Logout' onClick={authCtx.logout}/>}
-                
+                </div>
                 </div>
         </header>
         </div>

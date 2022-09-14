@@ -4,7 +4,8 @@
     left: 0;
     width: 100%;
     height: 5rem;
-    background-color: #b9c2c5;
+    /* background-color: #b9c2c5; */
+    background-color: #BCC6CC;
     color: rgb(0, 0, 0);
     display: flex;
     justify-content: space-between;
@@ -13,11 +14,25 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
     z-index: 10;
   }
+  .holder{
+    display: flex;
+    justify-content: space-between;
+    gap: 4rem;
+  }
 
   .header button {
     display: flex;
     justify-content: center;
-    background-color: red;
+    padding: 1rem;
+    
+    border-radius: 12px;
+    background-color: rgba(70, 124, 241, 0.26);
     width: 10rem;
-    margin-right: 24rem;
+    /* margin-right: 24rem; */
+   
+  }
+
+  .header button:hover{
+    cursor: pointer;
+    background-color: rgba(0, 48, 153, 0.26);
   }
