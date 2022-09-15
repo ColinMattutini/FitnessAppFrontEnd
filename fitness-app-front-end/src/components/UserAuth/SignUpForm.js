@@ -1,8 +1,9 @@
-import React, { useContext, useState } from 'react';
+import React, { Fragment, useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AuthContext from '../../context/user-auth';
 import LoginButton from '../UI/LoginButton';
 import Modal from '../UI/Modal';
+import SuccessSignUpModal from './SuccessSignUpModal';
 
 const SignUpForm = (props) => {
 
@@ -12,6 +13,7 @@ const SignUpForm = (props) => {
     const [emailInput, setEmailInput] = useState('');
     const [passwordInput, setPasswordInput] = useState('');
     const [reenterPasswordInput, setReenterPasswordInput] = useState('');
+    const [successSignUp, setSuccessSignUp] = useState(false);
 
     let validPassword = (passwordInput === reenterPasswordInput);
 
@@ -25,6 +27,14 @@ const SignUpForm = (props) => {
 
     const reenterPasswordInputHandler = event => {
         setReenterPasswordInput(event.target.value);
+    };
+
+    const successSignUpHandler = () => {
+        setSuccessSignUp(true);
+        setTimeout(() => {
+            setSuccessSignUp(false)
+            navigate('/homepage');
+         }, 3000)
     };
 
     const signUpFetch = (emailInput, passwordInput) => {
@@ -59,7 +69,8 @@ const SignUpForm = (props) => {
                   }
                 }).then(data => {
                   authCtx.login(data.idToken);
-                  navigate('/homepage');
+                  successSignUpHandler();
+                  
                  
                 })
                   .catch(error => {
@@ -74,13 +85,14 @@ const SignUpForm = (props) => {
         if(validPassword){
             console.log(emailInput, passwordInput);
             signUpFetch(emailInput, passwordInput);
-            props.hideSignUpForm();
+            // props.hideSignUpForm();
         } else{
             alert('Passwords Do Not Match!');
         };
     };
 
     return(
+        <Fragment>
         <Modal>
         <form onSubmit={submitSignUpHandler}>
             <h1>Sign-Up With Email and Password</h1>
@@ -105,6 +117,8 @@ const SignUpForm = (props) => {
             />
         </form>
         </Modal>
+        {successSignUp && <SuccessSignUpModal />}
+        </Fragment>
 
     );
 
