@@ -1,10 +1,12 @@
 import Modal from '../UI/Modal';
 import classes from './LoginForm.module.css';
+import { useNavigate } from 'react-router-dom'
 import { useState, useContext, useEffect } from 'react'; 
 import AuthContext from '../../context/user-auth.js'
 
 const LoginForm = (props) => {
     const authCtx = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const userValidation = () => fetch
     ('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDp4Tq7CcT5TUe1a5pPDBjUlly9zE-K6dM', 
@@ -36,6 +38,7 @@ const LoginForm = (props) => {
               }
             }).then(data => {
               authCtx.login(data.idToken);
+              navigate('/');
              
             })
               .catch(error => {
