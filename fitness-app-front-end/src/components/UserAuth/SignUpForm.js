@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import AuthContext from '../../context/user-auth';
 import LoginButton from '../UI/LoginButton';
 import Modal from '../UI/Modal';
@@ -6,6 +7,7 @@ import Modal from '../UI/Modal';
 const SignUpForm = (props) => {
 
     const authCtx = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const [emailInput, setEmailInput] = useState('');
     const [passwordInput, setPasswordInput] = useState('');
@@ -57,6 +59,7 @@ const SignUpForm = (props) => {
                   }
                 }).then(data => {
                   authCtx.login(data.idToken);
+                  navigate('/homepage');
                  
                 })
                   .catch(error => {
