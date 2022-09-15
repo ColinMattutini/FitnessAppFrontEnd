@@ -38,7 +38,7 @@ const LoginForm = (props) => {
               }
             }).then(data => {
               authCtx.login(data.idToken);
-              navigate('/');
+              navigate('/homepage');
              
             })
               .catch(error => {

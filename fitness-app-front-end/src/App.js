@@ -9,6 +9,7 @@ import { BrowserRouter, Route, Router, Routes } from 'react-router-dom';
 import AuthPage from './pages/AuthPage.js';
 import CalorieTrackerPage from './pages/CalorieTrackerPage.js';
 import SignUpPage from './pages/SignUpPage.js';
+import WelcomePage from './pages/WelcomePage.js';
 
 function App() {
 
@@ -35,12 +36,11 @@ function App() {
 
   return (
     <div>
-    
-    
-      
+
         <Routes>
           
-          {authCtx.isLoggedIn && <Route exact path = "/" element={<CalorieTrackerPage />} />}
+          {authCtx.isLoggedIn && <Route exact path = "/homepage" element={<CalorieTrackerPage />} />}
+          <Route exact path ="/" element={<WelcomePage />} />
           <Route exact path ="/authpage" element={<AuthPage/>} />
           <Route exact path ='/signuppage' element = {<SignUpPage />} />
         </Routes>
