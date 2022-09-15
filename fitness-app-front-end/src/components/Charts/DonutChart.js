@@ -15,11 +15,6 @@ const DonutChart = (props) => {
         setCalorieGoal(event.target.value);
     };
 
-    // const data = [
-    //     {name: 'Test', students: 40},
-    //     {name: 'Test2', students: 80}
-    // ];
-
     const calorieCount = [];
     const constantCalorieGoal = 2400;
     let totalCalories = 0;
