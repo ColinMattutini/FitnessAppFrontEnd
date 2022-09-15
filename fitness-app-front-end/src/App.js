@@ -8,6 +8,7 @@ import SignUpForm from './components/UserAuth/SignUpForm.js';
 import { BrowserRouter, Route, Router, Routes } from 'react-router-dom';
 import AuthPage from './pages/AuthPage.js';
 import CalorieTrackerPage from './pages/CalorieTrackerPage.js';
+import SignUpPage from './pages/SignUpPage.js';
 
 function App() {
 
@@ -41,6 +42,7 @@ function App() {
           
           {authCtx.isLoggedIn && <Route exact path = "/" element={<CalorieTrackerPage />} />}
           <Route exact path ="/authpage" element={<AuthPage/>} />
+          <Route exact path ='/signuppage' element = {<SignUpPage />} />
         </Routes>
       
       
