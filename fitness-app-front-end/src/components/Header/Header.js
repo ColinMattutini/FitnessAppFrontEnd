@@ -5,7 +5,7 @@ import { useContext } from 'react';
 import AuthContext from '../../context/user-auth';
 import { useNavigate } from 'react-router-dom';
 
-const Header = (props) => {
+const Header = () => {
 
     const navigate = useNavigate();
     const authCtx = useContext(AuthContext);

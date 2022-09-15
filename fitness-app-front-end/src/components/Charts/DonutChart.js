@@ -37,11 +37,10 @@ const DonutChart = (props) => {
     console.log(totalCalories);
     let calorieGoal = constantCalorieGoal - totalCalories;
     let calorieDifference = [
-        {'calories': calorieGoal}, 
-        {'calories': totalCalories}
+        {name: 'CalorieGoal', calories: calorieGoal}, 
+        {name: 'Total Calories', calories: totalCalories}
     ];
 
-    
     const CustomTooltip = ({active, payload, label}) => {
         if(active) {
             return(
@@ -52,7 +51,7 @@ const DonutChart = (props) => {
                     border: "1px solid #cccc"
                 }}
                 >
-                    <label>{`${payload[0].id} : ${payload[0].value}`}</label>
+                    <label>{`${payload[0].name} : ${payload[0].value}`}</label>
                 </div>
             );
         }
@@ -77,7 +76,6 @@ const DonutChart = (props) => {
                 />
 
             ))}
-
             </Pie>
         <Tooltip content={<CustomTooltip />} />
         </PieChart>

@@ -14,24 +14,24 @@ import WelcomePage from './pages/WelcomePage.js';
 function App() {
 
   const authCtx = useContext(AuthContext);
-  const [showModal, setShowModal] = useState(false);
-  const [showSignUpModal, setShowSignUpModal] = useState(false);
+  // const [showModal, setShowModal] = useState(false);
+  // const [showSignUpModal, setShowSignUpModal] = useState(false);
 
-  const showModalHandler = () => {
-      setShowModal(true);
-  };
+  // const showModalHandler = () => {
+  //     setShowModal(true);
+  // };
 
-  const hideModalHandler = () => {
-    setShowModal(false);
-  };
+  // const hideModalHandler = () => {
+  //   setShowModal(false);
+  // };
 
-  const showSignUpForm = () => {
-    setShowSignUpModal(true);
-  };
+  // const showSignUpForm = () => {
+  //   setShowSignUpModal(true);
+  // };
 
-  const hideSignUpFormHandler = () => {
-    setShowSignUpModal(false);
-  }
+  // const hideSignUpFormHandler = () => {
+  //   setShowSignUpModal(false);
+  // }
 
 
   return (
