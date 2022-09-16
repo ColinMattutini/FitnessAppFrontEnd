@@ -1,7 +1,7 @@
 import Modal from '../UI/Modal';
 import classes from './LoginForm.module.css';
 import { useNavigate } from 'react-router-dom'
-import { useState, useContext } from 'react'; 
+import { useState, useContext, useRef } from 'react'; 
 import AuthContext from '../../context/user-auth.js'
 
 const LoginForm = (props) => {
@@ -47,6 +47,7 @@ const LoginForm = (props) => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    
 
     const emailHandler = (event) => {
         setEmail(event.target.value);
