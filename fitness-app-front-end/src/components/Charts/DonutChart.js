@@ -78,7 +78,7 @@ const DonutChart = (props) => {
         
         <div className={classes.label}>
             {/* <TotalCaloriesGoal /> */}
-            <h1> You're Total Calories For Today Is: {totalCalories}</h1>
+            <h1> Your Total Calories For Today Is: {totalCalories}</h1>
         </div>
         
     </div>
