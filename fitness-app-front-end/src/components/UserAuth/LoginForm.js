@@ -8,42 +8,89 @@ const LoginForm = (props) => {
     const authCtx = useContext(AuthContext);
     const navigate = useNavigate();
 
-    const userValidation = () => fetch
-    ('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDp4Tq7CcT5TUe1a5pPDBjUlly9zE-K6dM', 
-        {
-            method: "POST",
-            body: JSON.stringify({
-                email: email,
-                password: password,
-                returnSecureToken: true
-            }),
-            headers: {
-                'Content-Type': 'application/json'
+    const userValidation = (email, password) => {
+        fetch(
+            'http://localhost:8080/api/login',
+            {
+                method: 'POST',
+                headers: {
+                    // 'Content-Type': 'application/json'
+                    'Content-Type' : 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams({
+                    username: email,
+                    password: password
+                })
+                    
+                    
+                
+                
             }
-        }
-        
-        ).then(res => {
-            if (res.ok){
-                return res.json();
-              }
-              else{
-                return res.json().then(data => {
-                  let errorMessage = 'Authentication Failed';
-                  if(data && data.error && data.error.message){
-                   errorMessage = data.error.message;
-                } 
-                alert(errorMessage);
-                throw new Error(errorMessage);
+            
+            ).then(res => {
+                if (res.ok){
+                    return res.json();
+                  }
+                  else{
+                    return res.json().then(data => {
+                      let errorMessage = 'Authentication Failed';
+                      if(data && data.error && data.error.message){
+                       errorMessage = data.error.message;
+                    } 
+                    // alert(errorMessage);
+                    throw new Error(errorMessage);
+                    });
+                  }
+                }).then(data => {
+                  console.log("Worked!");
+                  console.log(data);
+                  authCtx.login(data.access_token);
+                  navigate('/homepage');
+                  
+                 
+                })
+                  .catch(error => {
+                      alert('Something went wrong');
                 });
-              }
-            }).then(data => {
-              authCtx.login(data.idToken);
-              navigate('/homepage');
+
+            };
+
+    // const userValidation = () => fetch
+    // ('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDp4Tq7CcT5TUe1a5pPDBjUlly9zE-K6dM', 
+    //     {
+    //         method: "POST",
+    //         body: JSON.stringify({
+    //             email: email,
+    //             password: password,
+    //             returnSecureToken: true
+    //         }),
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         }
+    //     }
+        
+    //     ).then(res => {
+    //         if (res.ok){
+    //             return res.json();
+    //           }
+    //           else{
+    //             return res.json().then(data => {
+    //               let errorMessage = 'Authentication Failed';
+    //               if(data && data.error && data.error.message){
+    //                errorMessage = data.error.message;
+    //             } 
+    //             alert(errorMessage);
+    //             throw new Error(errorMessage);
+    //             });
+    //           }
+    //         }).then(data => {
+    //           authCtx.login(data.idToken);
+    //           navigate('/homepage');
              
-            })
-              .catch(error => {
-                  alert('Something went wrong');
-            });
+    //         })
+    //           .catch(error => {
+    //               alert('Something went wrong');
+    //         });
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -62,7 +109,7 @@ const LoginForm = (props) => {
         console.log(email, password);
         // setEmail('');
         // setPassword('');
-        userValidation();
+        userValidation(email, password);
         
         // userInfo();
         // props.hideLoginForm();
