@@ -9,34 +9,34 @@ const Homepage = (props) => {
 
   const authCtx = useContext(AuthContext);
 
-  const userInfo =() => {
-    fetch('https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyDp4Tq7CcT5TUe1a5pPDBjUlly9zE-K6dM',
-    {
-        method: 'POST',
-        body: JSON.stringify({
-            idToken: authCtx.token
-        }),
-        headers:{
-            'Content-Type': 'application/json'
-        }
-    }
-    ).then(res => {
-        if(res.ok){
-            return res.json();
-        }
-    }).then(data => {
+//   const userInfo =() => {
+//     fetch('https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyDp4Tq7CcT5TUe1a5pPDBjUlly9zE-K6dM',
+//     {
+//         method: 'POST',
+//         body: JSON.stringify({
+//             idToken: authCtx.token
+//         }),
+//         headers:{
+//             'Content-Type': 'application/json'
+//         }
+//     }
+//     ).then(res => {
+//         if(res.ok){
+//             return res.json();
+//         }
+//     }).then(data => {
         
-        authCtx.id(data.users[0].localId);
-        console.log('Tracking userInfo Function')
+//         authCtx.id(data.users[0].localId);
+//         console.log('Tracking userInfo Function')
         
-    })
-};
+//     })
+// };
 
-useEffect(() => {
-  if(authCtx.UUID === null && authCtx.isLoggedIn){
-    userInfo();
-  };
-});
+// useEffect(() => {
+//   if(authCtx.UUID === null && authCtx.isLoggedIn){
+//     userInfo();
+//   };
+// });
 
 
     return(
