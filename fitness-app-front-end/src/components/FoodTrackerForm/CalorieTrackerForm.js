@@ -48,12 +48,12 @@ const CalorieTrackerForm = () => {
             try{
                 const response = await fetch(
                     //'https://calorie-fitness-tracker-default-rtdb.firebaseio.com/foodItem.json',
-                    "http://localhost:8080/api/user/test2/foodEntry",
+                    "http://localhost:8080/api/user/"+authCtx.UUID+"/foodEntry",
                     {
                         method: 'POST',
                         body: JSON.stringify({
                             //userId: authCtx.UUID,
-                            foodItem: foodInput,
+                            foodName: foodInput,
                             calories: calorieInput,
                             date: dateInput
                         }),
