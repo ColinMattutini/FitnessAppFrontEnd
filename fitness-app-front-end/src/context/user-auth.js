@@ -6,8 +6,9 @@ const AuthContext = React.createContext({
     UUID: '',
     updatedState: 1,
     isLoggedIn: false,
-    login: (token) => {},
+    login: (token, UUID) => {},
     logout: () => {},
+    // id: (UUID) => {},
     updatedStateHandler: (number) => {}
 
 });
@@ -20,15 +21,16 @@ export const AuthContextProvider = (props) => {
     const [updatedState, setUpdatedState] = useState(1);
     const userIsLoggedIn = !!token;
 
-    const loginHandler = (token) => {
+    const loginHandler = (token, UUID) => {
         setToken(token);
+        setUUID(UUID);
         localStorage.setItem('token', token);
         setUpdatedState(70);
     };
 
-    const idHandler = (UUID) => {
-        setUUID(UUID);
-    };
+    // const idHandler = (UUID) => {
+    //     setUUID(UUID);
+    // };
 
     const logoutHandler = () => {
         setToken(null);
@@ -45,7 +47,7 @@ export const AuthContextProvider = (props) => {
         UUID: UUID,
         updatedState: updatedState,
         isLoggedIn: userIsLoggedIn,
-        id: idHandler,
+        //id: idHandler,
         login: loginHandler,
         logout: logoutHandler,
         updatedStateHandler: updateStateHandler
