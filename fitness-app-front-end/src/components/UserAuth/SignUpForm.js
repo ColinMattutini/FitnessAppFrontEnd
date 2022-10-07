@@ -1,4 +1,5 @@
 import React, { Fragment, useContext, useState } from 'react';
+import classes from './SignUpForm.module.css';
 import { useNavigate } from 'react-router-dom';
 import AuthContext from '../../context/user-auth';
 import LoginButton from '../UI/LoginButton';
@@ -16,6 +17,7 @@ const SignUpForm = (props) => {
     const [successSignUp, setSuccessSignUp] = useState(false);
 
     let validPassword = (passwordInput === reenterPasswordInput);
+    let validPasswordLength = (passwordInput.length > 7);
 
     const emailInputHandler = (event) => {
         setEmailInput(event.target.value);
@@ -33,19 +35,21 @@ const SignUpForm = (props) => {
         setSuccessSignUp(true);
         setTimeout(() => {
             setSuccessSignUp(false)
-            navigate('/homepage');
+            navigate('/authpage');
          }, 3000)
     };
 
     const signUpFetch = (emailInput, passwordInput) => {
         fetch(
-            'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDp4Tq7CcT5TUe1a5pPDBjUlly9zE-K6dM',
+            //'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDp4Tq7CcT5TUe1a5pPDBjUlly9zE-K6dM',
+            'http://localhost:8080/api/user/save',
             {
                 method: 'POST',
                 body: JSON.stringify({
+                    username: emailInput,
                     email: emailInput,
                     password: passwordInput,
-                    returnSecureToken: true
+                    //returnSecureToken: true
 
                 }),
                 headers: {
@@ -70,6 +74,7 @@ const SignUpForm = (props) => {
                 }).then(data => {
                   authCtx.login(data.idToken);
                   successSignUpHandler();
+                  //navigate('/authpage');
                   
                  
                 })
@@ -83,40 +88,52 @@ const SignUpForm = (props) => {
     const submitSignUpHandler = (event) => {
         event.preventDefault();
         if(validPassword){
+            if(validPasswordLength){
             console.log(emailInput, passwordInput);
             signUpFetch(emailInput, passwordInput);
+            } else{alert('Password Must Be A Minimum of 8 Characters!')}
             // props.hideSignUpForm();
         } else{
             alert('Passwords Do Not Match!');
         };
     };
 
+    const cancelHandler = (event) => {
+        event.preventDefault();
+        navigate('/');
+    }
+
     return(
         <Fragment>
-        <Modal>
-        <form onSubmit={submitSignUpHandler}>
-            <h1>Sign-Up With Email and Password</h1>
-            <label htmlFor='email'>E-mail</label>
-            <input 
+        
+        {/* <Modal> */}
+        
+        <form onSubmit={submitSignUpHandler} className={classes.login}>
+            <div className={classes.signupControl}>
+            <h1>Sign-Up</h1>
+            {/* <label htmlFor='email'>E-mail</label> */}
+            <input  placeholder="Email"
                 onChange={emailInputHandler}
             />
-            <label htmlFor='password'>Password</label>
-            <input type='password' 
+            {/* <label htmlFor='password'>Password</label> */}
+            <input type='password' placeholder="Password"
                 onChange={passwordInputHandler}
             />
-            <label htmlFor='passwordCheck'>Re-Enter Password</label>
-            <input type='password' 
+            {/* <label htmlFor='passwordCheck'>Re-Enter Password</label> */}
+            <input type='password' placeholder="Re-Enter Password"
                 onChange={reenterPasswordInputHandler}
             />
-            <LoginButton 
-                value={"close"} 
-                onClick={props.hideSignUpForm} />
             <LoginButton 
                 value={"Sign-Up"}
                 
             />
+            <LoginButton 
+                value={"Close"} 
+                onClick={cancelHandler} />
+            
+            </div>
         </form>
-        </Modal>
+        {/* </Modal> */}
         {successSignUp && <SuccessSignUpModal />}
         </Fragment>
 
