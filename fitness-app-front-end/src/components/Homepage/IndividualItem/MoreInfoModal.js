@@ -20,19 +20,21 @@ const MoreInfoModal = (props) => {
     const updateItemFetch = async (calories) => {
         try{
         await fetch(
-            'https://calorie-fitness-tracker-default-rtdb.firebaseio.com/foodItem/'+props.id+'.json',
+            //'https://calorie-fitness-tracker-default-rtdb.firebaseio.com/foodItem/'+props.id+'.json',
+            'http://localhost:8080/api/user/'+authCtx.UUID+'/foodEntry/'+props.id,
             {
                 method: "PUT",
                 body: JSON.stringify({
 
-                    userId: authCtx.UUID,
-                    foodItem: props.food,
+                    id: props.id,
+                    foodName: props.food,
                     calories: calories,
                     date: props.date
 
                 }
-
-                )
+                
+                ),
+                headers: {'Content-Type': 'application/json'}
             }
         
             )
