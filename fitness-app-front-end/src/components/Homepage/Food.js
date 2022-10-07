@@ -30,7 +30,8 @@ const Food = () => {
     const fetchFood = async (foodItem) => {
     try{
         const response = await fetch(
-        'https://calorie-fitness-tracker-default-rtdb.firebaseio.com/foodItem.json' 
+        //'https://calorie-fitness-tracker-default-rtdb.firebaseio.com/foodItem.json' 
+        'http://localhost:8080/api/user/test2/foodEntry'
         );
         if(!response.ok) {
             throw new Error ('Get Request Failed.');
@@ -41,14 +42,15 @@ const Food = () => {
         const loadedFood = [];
         
         for(const foodKey in data){
-            if(authCtx.UUID === data[foodKey].userId && filteredDate === data[foodKey].date){
+            if(filteredDate === data[foodKey].date){
+            //if(authCtx.UUID === data[foodKey].userId && filteredDate === data[foodKey].date){
             loadedFood.push({
-                id: foodKey,
-                food: data[foodKey].foodItem,
+                id: data[foodKey].entryId,
+                food: data[foodKey].foodName,
                 calories: data[foodKey].calories,
                 date: data[foodKey].date
-            });
-        }};
+            })};
+        };
             setFood(loadedFood);
             console.log(food.toString());
             
@@ -64,8 +66,8 @@ const Food = () => {
             authCtx.updatedStateHandler(0);
             
        }
-    }, [authCtx.UUID, authCtx.updatedState]);
-    
+    });
+    //[authCtx.UUID, authCtx.updatedState]);
 
     const foodList = food.map((foods) =>
     <FoodListing 
