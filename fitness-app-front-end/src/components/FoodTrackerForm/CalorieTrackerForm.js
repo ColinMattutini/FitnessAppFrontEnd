@@ -46,6 +46,7 @@ const CalorieTrackerForm = () => {
     const enterFoodHandler = 
         async (foodInput, calorieInput, dateInput) => {
             try{
+                
                 const response = await fetch(
                     //'https://calorie-fitness-tracker-default-rtdb.firebaseio.com/foodItem.json',
                     "http://localhost:8080/api/user/"+authCtx.UUID+"/foodEntry",
@@ -59,14 +60,16 @@ const CalorieTrackerForm = () => {
                         }),
                         headers: {
                             'Content-Type': 'application/json',
+                            'Authorization': 'Bearer ' + localStorage.getItem("token")
                         },
                     }
                 );
+                authCtx.updatedStateHandler(40);
                 if(!response.ok){
                     throw new Error('Request Failed');
                 }
                 const data = await response.json();
-                authCtx.updatedStateHandler(40);
+                // authCtx.updatedStateHandler(40);
                 // const generatedId = data.name;
             } catch (err) {
                 setError(err.message || 'Something went wrong');
