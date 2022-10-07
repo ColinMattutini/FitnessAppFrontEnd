@@ -31,7 +31,10 @@ const Food = () => {
     try{
         const response = await fetch(
         //'https://calorie-fitness-tracker-default-rtdb.firebaseio.com/foodItem.json' 
-        'http://localhost:8080/api/user/test2/foodEntry'
+        'http://localhost:8080/api/user/'+authCtx.UUID+'/foodEntry',
+        {
+            headers: {'Authorization': 'Bearer ' + localStorage.getItem("token")},
+        }
         );
         if(!response.ok) {
             throw new Error ('Get Request Failed.');
@@ -62,12 +65,13 @@ const Food = () => {
 
     useEffect(() => {
         if(authCtx.UUID !== null && authCtx.updatedState > 0){
+            console.log("UseEffect Fetcher Ran");
             fetchFood();
             authCtx.updatedStateHandler(0);
             
        }
-    });
-    //[authCtx.UUID, authCtx.updatedState]);
+    },[authCtx.updatedState]);
+    
 
     const foodList = food.map((foods) =>
     <FoodListing 
