@@ -1,7 +1,7 @@
 import Modal from '../UI/Modal';
 import classes from './LoginForm.module.css';
 import { useNavigate } from 'react-router-dom'
-import { useState, useContext, useRef } from 'react'; 
+import { useState, useContext, useRef, Fragment } from 'react'; 
 import AuthContext from '../../context/user-auth.js'
 
 const LoginForm = (props) => {
@@ -44,7 +44,8 @@ const LoginForm = (props) => {
                 }).then(data => {
                   console.log("Worked!");
                   console.log(data);
-                  authCtx.login(data.access_token);
+                  authCtx.login(data.access_token, data.username);
+                  //authCtx.id(data.username);
                   navigate('/homepage');
                   
                  
@@ -116,9 +117,15 @@ const LoginForm = (props) => {
     
     };
 
+    const homepageRedirectHandler = (event) => {
+        event.preventDefault();
+        navigate('/');
+    }
+
     return (
-        <Modal>
-            <form className={classes.form} onSubmit={submitHandler}>
+        <Fragment>
+            <form onSubmit={submitHandler} className={classes.login} >
+                <div className={classes.signupControl}>
                 <label htmlFor='email'>E-Mail</label>
                 <input 
                     type='text'
@@ -131,9 +138,12 @@ const LoginForm = (props) => {
                 />                
                 <button onClick={props.onClick}>Submit</button>
                 {/* <button onClick={props.hideLoginForm}>Close</button> */}
+                <button onClick={homepageRedirectHandler}>Cancel</button>
+                </div>
 
             </form>
-        </Modal>
+            </Fragment>
+        
 
     );
 
