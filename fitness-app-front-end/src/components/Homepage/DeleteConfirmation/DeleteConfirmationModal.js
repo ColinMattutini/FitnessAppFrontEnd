@@ -10,13 +10,14 @@ const DeleteConfirmationModal = (props) => {
     const fetchDeleteFood = async (foodItem) => {
         try{
             const response = await fetch(
-                'https://calorie-fitness-tracker-default-rtdb.firebaseio.com/foodItem/'+props.id+'.json',
+                //'https://calorie-fitness-tracker-default-rtdb.firebaseio.com/foodItem/'+props.id+'.json',
+                "http://localhost:8080/api/user/"+authCtx.UUID+"/foodEntry/"+props.id,
                 {
                     method: 'DELETE',
-                    body: JSON.stringify({
-                        id: props.id
-                    }),
-                    headers: {'Content-Type': 'application/json'}
+                    // body: JSON.stringify({
+                    //     entryId: props.id
+                    // }),
+                    // headers: {'Content-Type': 'application/json'},
                 }
             );
             authCtx.updatedStateHandler(20);
