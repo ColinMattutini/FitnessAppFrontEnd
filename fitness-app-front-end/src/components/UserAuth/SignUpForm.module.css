@@ -50,6 +50,10 @@
     
 }
 
+.signupControl p{
+    margin-top: 8rem;
+}
+
 .signupControl button:hover,
 .signupControl button:active{
     background-color: #510674;

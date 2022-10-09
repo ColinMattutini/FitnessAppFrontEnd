@@ -130,7 +130,7 @@ const SignUpForm = (props) => {
             <LoginButton 
                 value={"Close"} 
                 onClick={cancelHandler} />
-            
+            <p>Already a Member? Click Here to Login</p>
             </div>
         </form>
         {/* </Modal> */}
