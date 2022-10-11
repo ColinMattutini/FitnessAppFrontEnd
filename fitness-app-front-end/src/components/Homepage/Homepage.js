@@ -53,9 +53,9 @@ const Homepage = (props) => {
           </div>
           
         </div> 
-        <div className={classes.foodListing}>
+        
           <Food />
-        </div> 
+        
         
       </Fragment>
     );
