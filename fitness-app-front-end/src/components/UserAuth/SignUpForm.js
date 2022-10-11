@@ -14,6 +14,8 @@ const SignUpForm = (props) => {
     const [emailInput, setEmailInput] = useState('');
     const [passwordInput, setPasswordInput] = useState('');
     const [reenterPasswordInput, setReenterPasswordInput] = useState('');
+    const [firstNameInput, setFirstNameInput] = useState('');
+    const [lastNameInput, setLastNameInput] = useState('');
     const [successSignUp, setSuccessSignUp] = useState(false);
 
     let validPassword = (passwordInput === reenterPasswordInput);
@@ -31,6 +33,14 @@ const SignUpForm = (props) => {
         setReenterPasswordInput(event.target.value);
     };
 
+    const firstNameInputHandler = event => {
+        setFirstNameInput(event.target.value);
+    }
+
+    const lastNameInputHandler = event => {
+        setLastNameInput(event.target.value);
+    }
+
     const successSignUpHandler = () => {
         setSuccessSignUp(true);
         setTimeout(() => {
@@ -39,13 +49,15 @@ const SignUpForm = (props) => {
          }, 3000)
     };
 
-    const signUpFetch = (emailInput, passwordInput) => {
+    const signUpFetch = (emailInput, passwordInput, firstNameInput, lastNameInput) => {
         fetch(
             //'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDp4Tq7CcT5TUe1a5pPDBjUlly9zE-K6dM',
             'http://localhost:8080/api/user/save',
             {
                 method: 'POST',
                 body: JSON.stringify({
+                    firstName: firstNameInput,
+                    lastName: lastNameInput,
                     username: emailInput,
                     email: emailInput,
                     password: passwordInput,
@@ -90,7 +102,7 @@ const SignUpForm = (props) => {
         if(validPassword){
             if(validPasswordLength){
             console.log(emailInput, passwordInput);
-            signUpFetch(emailInput, passwordInput);
+            signUpFetch(emailInput, passwordInput, firstNameInput, lastNameInput);
             } else{alert('Password Must Be A Minimum of 8 Characters!')}
             // props.hideSignUpForm();
         } else{
@@ -103,6 +115,11 @@ const SignUpForm = (props) => {
         navigate('/');
     }
 
+    const loginNavHandler = (event) => {
+        event.preventDefault(event);
+        navigate('/authpage');
+    }
+
     return(
         <Fragment>
         
@@ -111,12 +128,18 @@ const SignUpForm = (props) => {
         <form onSubmit={submitSignUpHandler} className={classes.login}>
             <div className={classes.signupControl}>
             <h1>Sign-Up</h1>
+            <input placeholder="First Name" 
+                onChange={firstNameInputHandler}
+            />
+            <input placeholder="Last Name" 
+                onChange={lastNameInputHandler}
+            />
             {/* <label htmlFor='email'>E-mail</label> */}
             <input  placeholder="Email"
                 onChange={emailInputHandler}
             />
             {/* <label htmlFor='password'>Password</label> */}
-            <input type='password' placeholder="Password"
+            <input type='password' placeholder="Password: Enter 8 characters or more"
                 onChange={passwordInputHandler}
             />
             {/* <label htmlFor='passwordCheck'>Re-Enter Password</label> */}
@@ -130,7 +153,7 @@ const SignUpForm = (props) => {
             <LoginButton 
                 value={"Close"} 
                 onClick={cancelHandler} />
-            <p>Already a Member? Click Here to Login</p>
+            <p onClick={loginNavHandler}>Already a Member? Click Here to Login</p>
             </div>
         </form>
         {/* </Modal> */}
