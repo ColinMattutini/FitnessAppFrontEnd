@@ -34,7 +34,11 @@ const MoreInfoModal = (props) => {
                 }
                 
                 ),
-                headers: {'Content-Type': 'application/json'}
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + localStorage.getItem("token")
+                },
+                
             }
         
             )
@@ -48,7 +52,6 @@ const MoreInfoModal = (props) => {
     const onSubmitUpdateHandler = (event) => {
         event.preventDefault();
         updateItemFetch(calories);
-        
         props.hideModalHandler();
     }
 

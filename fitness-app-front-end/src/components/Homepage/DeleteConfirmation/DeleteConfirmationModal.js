@@ -17,7 +17,10 @@ const DeleteConfirmationModal = (props) => {
                     // body: JSON.stringify({
                     //     entryId: props.id
                     // }),
-                    // headers: {'Content-Type': 'application/json'},
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + localStorage.getItem("token")
+                    },
                 }
             );
             authCtx.updatedStateHandler(20);
