@@ -122,6 +122,10 @@ const LoginForm = (props) => {
         navigate('/');
     }
 
+    const signupRedirectHandler = () => {
+        navigate('/signuppage')
+    }
+
     return (
         <Fragment>
             <form onSubmit={submitHandler} className={classes.login} >
@@ -139,6 +143,7 @@ const LoginForm = (props) => {
                 <button onClick={props.onClick}>Submit</button>
                 {/* <button onClick={props.hideLoginForm}>Close</button> */}
                 <button onClick={homepageRedirectHandler}>Cancel</button>
+                <p onClick={signupRedirectHandler}>Don't have an account? Sign-up here!</p>
                 </div>
 
             </form>
