@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 // import { useRef } from 'react';
 import { useState } from 'react';
 import classes from './DonutChart.module.css';
@@ -8,12 +8,22 @@ import TotalCaloriesGoal from './TotalCaloriesGoal';
 
 const DonutChart = (props) => {
 
-    const [dailyCalorieGoal, setCalorieGoal] = useState('');
+    const [dailyCalorieGoal, setCalorieGoal] = useState(2400);
+   
+    const [showGoalModal, setGoalModal] = useState(false);
     const COLORS = ["#eb4343", "#acff75"];
 
-    const calorieGoalHandler = (event) => {
-        setCalorieGoal(event.target.value);
-    };
+    const showCalorieGoalModalHandler = (event) => {
+        setGoalModal(true);
+    }
+
+    const hideCalorieGoalModalHandler = () => {
+        setGoalModal(false);
+    }
+
+    const calorieGoalHandler = (data) => {
+         setCalorieGoal(data);
+     }
 
     const calorieCount = [];
     const constantCalorieGoal = 2400;
@@ -30,7 +40,7 @@ const DonutChart = (props) => {
         });
     };
     console.log(totalCalories);
-    let calorieGoal = constantCalorieGoal - totalCalories;
+    let calorieGoal = dailyCalorieGoal - totalCalories;
     let calorieDifference = [
         {name: 'CalorieGoal', calories: calorieGoal}, 
         {name: 'Total Calories', calories: totalCalories}
@@ -55,6 +65,7 @@ const DonutChart = (props) => {
 
 
     return(
+        <Fragment>
         <div className={classes.donutChart}>
         <PieChart width={500} height={500}>
             <Pie 
@@ -79,9 +90,17 @@ const DonutChart = (props) => {
         <div className={classes.label}>
             {/* <TotalCaloriesGoal /> */}
             <h1> Your Total Calories For Today Is: {totalCalories}</h1>
+            {/* <input value={dailyCalorieGoal} onChange={calorieGoalHandler}/> */}
+            
+            <button onClick={showCalorieGoalModalHandler}>Change Calorie Goal</button> 
         </div>
         
     </div>
+    {showGoalModal && <TotalCaloriesGoal  hideCalorieGoalModalHandler={hideCalorieGoalModalHandler} 
+        calorieGoalHandler={calorieGoalHandler}
+    />}
+   
+    </Fragment>
 
     );
 
