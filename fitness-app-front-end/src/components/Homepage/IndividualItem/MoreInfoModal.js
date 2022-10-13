@@ -16,8 +16,12 @@ const MoreInfoModal = (props) => {
         setCalories(event.target.value);
     };
 
+    const dateHandler = (event) => {
+        setDate(event.target.value);
+    }
 
-    const updateItemFetch = async (calories) => {
+
+    const updateItemFetch = async (calories, date) => {
         try{
         await fetch(
             //'https://calorie-fitness-tracker-default-rtdb.firebaseio.com/foodItem/'+props.id+'.json',
@@ -29,7 +33,7 @@ const MoreInfoModal = (props) => {
                     id: props.id,
                     foodName: props.food,
                     calories: calories,
-                    date: props.date
+                    date: date
 
                 }
                 
@@ -51,7 +55,7 @@ const MoreInfoModal = (props) => {
 
     const onSubmitUpdateHandler = (event) => {
         event.preventDefault();
-        updateItemFetch(calories);
+        updateItemFetch(calories, date);
         props.hideModalHandler();
     }
 
@@ -70,6 +74,9 @@ const MoreInfoModal = (props) => {
             <input 
                 type='date'
                 defaultValue={props.date}
+                onChange={dateHandler}
+                
+                
             />
             <LoginButton 
                 value='Close' 
