@@ -1,14 +1,50 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useContext } from 'react';
 // import { useRef } from 'react';
 import { useState } from 'react';
 import classes from './DonutChart.module.css';
 import { PieChart, Pie, Tooltip, Cell } from 'recharts'; 
 import TotalCaloriesGoal from './TotalCaloriesGoal';
+import AuthContext from '../../context/user-auth';
 
 
 const DonutChart = (props) => {
 
-    const [dailyCalorieGoal, setCalorieGoal] = useState(2400);
+    const authCtx = useContext(AuthContext);
+
+    const fetchCalorieGoalHandler = async (calorie) => {
+        try{
+            const response = await fetch(
+                "http://localhost:8080/api/caloriegoal/"+authCtx.UUID
+            
+                
+            );
+            if(!response.ok) {
+                throw new Error ('Get Request Failed.');
+            }
+
+            const data =  await response.json();
+            console.log("FetchCalorieGoalHandler got Here");
+            const loadedGoal = [];
+        
+        for(const foodKey in data){
+            
+            loadedGoal.push({
+                
+                calories: data[foodKey].calorieGoal,
+                
+            });
+        };
+            setCalorieGoal(loadedGoal[0].calorieGoal);
+            console.log(dailyCalorieGoal);
+              
+            
+            
+        }catch{
+            
+        }
+    }
+
+    const [dailyCalorieGoal, setCalorieGoal] = useState('');
    
     const [showGoalModal, setGoalModal] = useState(false);
     const COLORS = ["#eb4343", "#acff75"];
@@ -19,15 +55,21 @@ const DonutChart = (props) => {
 
     const hideCalorieGoalModalHandler = () => {
         setGoalModal(false);
+        fetchCalorieGoalHandler();
     }
 
-    const calorieGoalHandler = (data) => {
-         setCalorieGoal(data);
-     }
+    // const calorieGoalHandler = (data) => {
+    //      setCalorieGoal(data);
+    //  }
+
+    
+
+
 
     const calorieCount = [];
-    const constantCalorieGoal = 2400;
+    // const constantCalorieGoal = 2400;
     let totalCalories = 0;
+
     
     
     for(const i in props.foodArray){
@@ -93,11 +135,12 @@ const DonutChart = (props) => {
             {/* <input value={dailyCalorieGoal} onChange={calorieGoalHandler}/> */}
             
             <button onClick={showCalorieGoalModalHandler}>Change Calorie Goal</button> 
+            <button onClick={fetchCalorieGoalHandler} />
         </div>
         
     </div>
     {showGoalModal && <TotalCaloriesGoal  hideCalorieGoalModalHandler={hideCalorieGoalModalHandler} 
-        calorieGoalHandler={calorieGoalHandler}
+        // calorieGoalHandler={calorieGoalHandler}
     />}
    
     </Fragment>
