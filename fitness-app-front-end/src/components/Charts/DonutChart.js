@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from 'react';
+import React, { Fragment, useContext, useEffect } from 'react';
 // import { useRef } from 'react';
 import { useState } from 'react';
 import classes from './DonutChart.module.css';
@@ -24,18 +24,8 @@ const DonutChart = (props) => {
 
             const data =  await response.json();
             console.log("FetchCalorieGoalHandler got Here");
-            const loadedGoal = [];
-        
-        for(const foodKey in data){
-            
-            loadedGoal.push({
-                
-                calories: data[foodKey].calorieGoal,
-                
-            });
-        };
-            setCalorieGoal(loadedGoal[0].calorieGoal);
-            console.log(dailyCalorieGoal);
+            setCalorieGoal(data);
+            console.log(data);
               
             
             
@@ -44,7 +34,11 @@ const DonutChart = (props) => {
         }
     }
 
-    const [dailyCalorieGoal, setCalorieGoal] = useState('');
+    useEffect(() => {
+        fetchCalorieGoalHandler();
+    }, []);
+
+    const [dailyCalorieGoal, setCalorieGoal] = useState(2400);
    
     const [showGoalModal, setGoalModal] = useState(false);
     const COLORS = ["#eb4343", "#acff75"];
@@ -57,17 +51,7 @@ const DonutChart = (props) => {
         setGoalModal(false);
         fetchCalorieGoalHandler();
     }
-
-    // const calorieGoalHandler = (data) => {
-    //      setCalorieGoal(data);
-    //  }
-
-    
-
-
-
     const calorieCount = [];
-    // const constantCalorieGoal = 2400;
     let totalCalories = 0;
 
     
@@ -135,7 +119,7 @@ const DonutChart = (props) => {
             {/* <input value={dailyCalorieGoal} onChange={calorieGoalHandler}/> */}
             
             <button onClick={showCalorieGoalModalHandler}>Change Calorie Goal</button> 
-            <button onClick={fetchCalorieGoalHandler} />
+            
         </div>
         
     </div>
