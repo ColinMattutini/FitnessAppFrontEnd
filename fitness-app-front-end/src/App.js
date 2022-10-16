@@ -10,6 +10,7 @@ import AuthPage from './pages/AuthPage.js';
 import CalorieTrackerPage from './pages/CalorieTrackerPage.js';
 import SignUpPage from './pages/SignUpPage.js';
 import WelcomePage from './pages/WelcomePage.js';
+import WorkoutPage from './pages/WorkoutPage.js';
 
 function App() {
 
@@ -43,6 +44,7 @@ function App() {
           <Route exact path ="/" element={<WelcomePage />} />
           <Route exact path ="/authpage" element={<AuthPage/>} />
           <Route exact path ='/signuppage' element = {<SignUpPage />} />
+          {authCtx.isLoggedIn && <Route exact path = '/workoutpage' element = {<WorkoutPage />} />}
         </Routes>
       
       
