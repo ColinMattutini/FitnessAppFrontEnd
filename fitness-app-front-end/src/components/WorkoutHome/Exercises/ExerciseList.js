@@ -1,15 +1,51 @@
-import React from "react";
-
+import React, { Fragment } from "react";
+import classes from './ExerciseList.module.css'
 
 const ExerciseList = (props) => {
     return(
-            <div>
-                
-                    <h1>{props.exerciseName}</h1>
-                    <h1>{props.sets}</h1>
-                    <h2>{props.reps}</h2>
-                
+        <Fragment>
+            <div className={classes.display}>
+                    <div>
+                        <h1>{props.exerciseName}</h1>
+                    </div>
+                    <div  className={classes.entries}>
+                        <div className={classes.button_left}>
+                            <button>-</button>
+                        </div>
+                        <div className={classes.holder}>
+                            <h2>Sets</h2>
+                            <h1>{props.sets}</h1>
+                        </div>
+                        <div className={classes.button_right}>
+                            <button>+</button>
+                        </div>
+                    </div>  
+
+                    <div className={classes.midhold}>       
+                        <div className={classes.button_left}>
+                            <button>←</button>  
+                        </div>
+                        <div className={classes.button_right}>
+                            <button>→</button>  
+                        </div>
+                    </div>
+
+                    <div  className={classes.entries}>
+                        <div className={classes.button_left}>
+                            <button>-</button>
+                        </div>
+                        <div className={classes.holder}>
+                            <h2>Reps</h2>
+                            <h1>{props.reps}</h1>
+                        </div>
+                        <div className={classes.button_right}>
+                            <button>+</button>
+                        </div>
+                    </div>  
+                         
             </div>
+            
+            </Fragment>
     )
 
 }
