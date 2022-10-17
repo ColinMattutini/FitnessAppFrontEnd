@@ -91,7 +91,8 @@ const Food = () => {
         <DonutChart foodArray={food}/>
         
     </div>
-    <Card>
+    <div className={classes.cardEdit}>
+    <Card >
         <section className={classes.food}>
             <DateFilter 
                 selected={filteredDate}
@@ -103,6 +104,7 @@ const Food = () => {
             
         </section>
     </Card>
+    </div>
     </Fragment>
 
     );
