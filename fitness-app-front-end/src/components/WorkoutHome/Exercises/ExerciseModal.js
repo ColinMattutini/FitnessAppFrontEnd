@@ -3,6 +3,7 @@ import AuthContext from "../../../context/user-auth";
 import Modal from "../../UI/Modal";
 import { useState } from "react";
 import ExerciseList from "./ExerciseList";
+import classes from './ExerciseModal.module.css'
 
 const ExerciseModal = props => {
 
@@ -82,15 +83,19 @@ const ExerciseModal = props => {
     
     
     return(
-        <Modal>
+        <Modal className={classes.display}>
+            <div className={classes.display}>
             
-            {exerciseList[exerciseIndex]}
-            
+                {exerciseList[exerciseIndex]}
+                
+            </div>
             <button onClick={props.hideExerciseModalHandler}>Close</button>
             <button onClick={fetchExercises}>Exercise Fetch Test</button>
             <button onClick={testExercisesString}>Print Exercises</button>
             <button onClick={exerciseListDecreaser}>Previous</button>
             <button onClick={exerciseListIndexer}>Next</button>
+            
+            
         </Modal>
     )
 }
