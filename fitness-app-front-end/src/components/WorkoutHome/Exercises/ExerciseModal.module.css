@@ -1,0 +1,17 @@
+.display{
+    align-items: center;
+}
+
+.button_left{
+    margin-right:auto;
+}
+
+.button_right{
+    
+    
+}
+
+.display button{
+    display: flex;
+    margin-left: auto;
+}

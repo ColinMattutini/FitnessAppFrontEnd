@@ -1,9 +1,11 @@
-import React, { useContext, useEffect } from "react";
+import React, { Fragment, useContext, useEffect } from "react";
 import AuthContext from "../../../context/user-auth";
 import Modal from "../../UI/Modal";
 import { useState } from "react";
 import ExerciseList from "./ExerciseList";
 import classes from './ExerciseModal.module.css'
+import NewExerciseForm from "./NewExercise/NewExerciseForm";
+import NewExerciseDisplay from "./NewExercise/NewExerciseDisplay";
 
 const ExerciseModal = props => {
 
@@ -11,6 +13,15 @@ const ExerciseModal = props => {
     const [exercises, setExercises] = useState([]);
     const [exerciseLength, setExerciseLength] = useState(0);
     const [exerciseIndex, setExerciseIndex] = useState(0);
+    const [showNewExerciseForm, setShowNewExerciseForm] = useState(false);
+
+    const showNewExerciseFormHandler = () => {
+        setShowNewExerciseForm(true)
+    }
+
+    const hideNewExerciseFormHandler = () => {
+        setShowNewExerciseForm(false);
+    }
 
     const fetchExercises = async () => {
         
@@ -83,9 +94,16 @@ const ExerciseModal = props => {
     
     
     return(
+        <Fragment>
+        {showNewExerciseForm && 
+            <NewExerciseDisplay hideNewExerciseFormHandler={hideNewExerciseFormHandler}
+            workoutId={props.workoutId}
+        />
+        }
         <Modal className={classes.display}>
-            <div className={classes.display}>
             
+            <div className={classes.display}>
+                <button onClick={showNewExerciseFormHandler}>Add New Exercise</button>
                 {exerciseList[exerciseIndex]}
                 
             </div>
@@ -97,6 +115,8 @@ const ExerciseModal = props => {
             
             
         </Modal>
+        </Fragment>
+        
     )
 }
 
