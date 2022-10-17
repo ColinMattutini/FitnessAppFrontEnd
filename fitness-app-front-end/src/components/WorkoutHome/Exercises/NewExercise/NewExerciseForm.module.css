@@ -1,0 +1,42 @@
+.display{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* max-width: 75%; */
+    margin: auto;
+
+}
+
+.display h1{
+    text-align: center;
+}
+
+.entries{
+    display: flex;
+    align-items: center;
+    width:75%;
+    
+
+}
+
+.entries .holder{
+    align-items: center;
+    margin:auto;
+    max-width: 75%;
+}
+
+.button_right {
+    display:flex;
+    margin-left: auto;
+}
+
+.button_left {
+    display:flex;
+    margin-right: auto;
+}
+
+.midhold{
+    display: flex;
+    align-items: center;
+    width:100%;
+}
