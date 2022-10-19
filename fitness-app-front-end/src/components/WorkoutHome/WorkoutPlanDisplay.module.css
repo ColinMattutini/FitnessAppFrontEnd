@@ -1,11 +1,14 @@
 .cardEdit{
     margin: auto;
-    width: 95%;
+    width: 100%;
     /* margin-left: 20%; */
     padding-left: 8rem;
     padding-right: 2.5rem;
     padding-top: 4rem;
     
+}
+.cardEdit ul{
+  padding: 0;
 }
 
 .workouts {

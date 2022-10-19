@@ -10,8 +10,17 @@ const WorkoutPlanDisplay = (props) => {
     const [workouts, setWorkouts] = useState([]);
     const [showNewWorkoutCard, setShowNewWorkoutCard] = useState(false);
     const [workoutStateUpdater, setWorkoutStateupdater] = useState(0);
+    const [deleteState, setDeleteState] = useState(false);
 
     const authCtx = useContext(AuthContext);
+
+    const deleteStateHandler = () => {
+        setDeleteState(true);
+    }
+
+    const endDeleteStateHandler = () => {
+        setDeleteState(false);
+    }
 
     const showNewWorkoutCardHandler = (event) => {
         event.preventDefault();
@@ -67,6 +76,7 @@ const WorkoutPlanDisplay = (props) => {
             workoutId = {workoutKey.workoutId}
             workoutName = {workoutKey.workoutName}
             showExerciseModalHandler={props.showExerciseModalHandler}
+            deleteState={deleteState}
             />
     );
     
@@ -83,7 +93,10 @@ const WorkoutPlanDisplay = (props) => {
             />}
         <div className={classes.cardEdit}>
         <Card>
+            
             <button onClick={showNewWorkoutCardHandler}>Create Workout</button>
+            {!deleteState && <button onClick={deleteStateHandler}>Delete</button>}
+            {deleteState && <button onClick={endDeleteStateHandler}>Cancel</button>}
             <section className={classes.workouts}>
                 <ul >
                     {workoutList}

@@ -1,0 +1,15 @@
+
+.inLineCards{
+    display:flex;
+    
+}
+
+.button{
+    margin:auto;
+    padding-right:14px;
+   
+}
+
+.inLineCards .fullCard{
+    width: 100%;
+}
