@@ -10,6 +10,7 @@ const NewExerciseDisplay = props => {
             <button className={classes.button} onClick={props.hideNewExerciseFormHandler}>X</button>
             <NewExerciseForm 
                 hideNewExerciseFormHandler={props.hideNewExerciseFormHandler}
+                newExercisePostHandler={props.newExercisePostHandler}
                 workoutId={props.workoutId}
             />
         </Modal>

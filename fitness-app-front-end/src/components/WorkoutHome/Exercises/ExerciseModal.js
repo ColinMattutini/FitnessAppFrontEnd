@@ -14,6 +14,7 @@ const ExerciseModal = props => {
     const [exerciseLength, setExerciseLength] = useState(0);
     const [exerciseIndex, setExerciseIndex] = useState(0);
     const [showNewExerciseForm, setShowNewExerciseForm] = useState(false);
+    const [newExercisePost, setNewExercisePost] = useState(0);
 
     const showNewExerciseFormHandler = () => {
         setShowNewExerciseForm(true)
@@ -21,6 +22,10 @@ const ExerciseModal = props => {
 
     const hideNewExerciseFormHandler = () => {
         setShowNewExerciseForm(false);
+    }
+
+    const newExercisePostHandler = () => {
+        setNewExercisePost(newExercisePost + 1);
     }
 
     const fetchExercises = async () => {
@@ -87,8 +92,10 @@ const ExerciseModal = props => {
     }
 
     useEffect(() => {
-        fetchExercises();
-    }, [props.workoutId]);
+        
+            fetchExercises();
+            
+    }, [props.workoutId, newExercisePost]);
 
    
     
@@ -96,7 +103,9 @@ const ExerciseModal = props => {
     return(
         <Fragment>
         {showNewExerciseForm && 
-            <NewExerciseDisplay hideNewExerciseFormHandler={hideNewExerciseFormHandler}
+            <NewExerciseDisplay 
+            hideNewExerciseFormHandler={hideNewExerciseFormHandler}
+            newExercisePostHandler={newExercisePostHandler}
             workoutId={props.workoutId}
         />
         }

@@ -1,10 +1,14 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useContext, useState } from "react";
+import AuthContext from "../../../../context/user-auth";
 import classes from './NewExerciseForm.module.css'
 
 const NewExerciseForm = (props) => {
 
     const [sets, setSets] = useState(0);
     const [reps, setReps] = useState(0);
+    const [exerciseName, setExerciseName] = useState('');
+
+    const authCtx = useContext(AuthContext);
 
     const setsIncreaser = (event) => {
         event.preventDefault();
@@ -26,10 +30,52 @@ const NewExerciseForm = (props) => {
         setReps(reps - 1);
     }
 
+    const exerciseNameHandler = (event) => {
+        setExerciseName(event.target.value);
+    }
+
+    const postNewExercise = async (workoutId, exerciseName, sets, reps) => {
+        try{
+        const response = await fetch(
+            "http://localhost:8080/api/user/"+authCtx.UUID+"/workout/"+props.workoutId+"/exercise",
+            {
+                method: "POST",
+                body: JSON.stringify({
+                    workoutId:  workoutId,
+                    exerciseName: exerciseName,
+                    sets, sets,
+                    reps, reps
+                }),
+                headers: {
+                    'Content-Type': 'application/json',
+                    //'Authorization': 'Bearer ' + localStorage.getItem("token")
+                },
+            }
+
+        )
+        props.newExercisePostHandler();
+        if(!response.ok){
+            throw new Error('Request Failed');
+        }
+        
+        
+    // authCtx.updatedStateHandler(40);
+    // const generatedId = data.name;
+        } 
+    catch (err) {
+        
+    };
+    
+}
+            
+      
     const formSubmitter = (event) => {
         event.preventDefault();
-        console.log(props.workoutId, sets, reps);
+        console.log(props.workoutId, exerciseName, sets, reps);
+        postNewExercise(props.workoutId, exerciseName, sets, reps);
         props.hideNewExerciseFormHandler();
+        
+        
     }
 
     return(     
@@ -37,7 +83,9 @@ const NewExerciseForm = (props) => {
             <div className={classes.display}>
                     <div>
                         <h1>Exercise Name</h1>
-                        <input placeholder="Exercise Name"></input>
+                        <input placeholder="Exercise Name"
+                            onChange={exerciseNameHandler}
+                        ></input>
                     </div>
                     <div  className={classes.entries}>
                         <div className={classes.button_left}>
