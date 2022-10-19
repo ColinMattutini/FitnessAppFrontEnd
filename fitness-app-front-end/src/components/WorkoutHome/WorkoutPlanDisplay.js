@@ -3,11 +3,29 @@ import WorkoutList from "./WorkoutList";
 import classes from './WorkoutPlanDisplay.module.css';
 import { Fragment, useContext, useEffect, useState } from "react";
 import AuthContext from "../../context/user-auth";
+import NewWorkoutCard from "./NewWorkoutForm";
 
 const WorkoutPlanDisplay = (props) => {
 
     const [workouts, setWorkouts] = useState([]);
+    const [showNewWorkoutCard, setShowNewWorkoutCard] = useState(false);
+    const [workoutStateUpdater, setWorkoutStateupdater] = useState(0);
+
     const authCtx = useContext(AuthContext);
+
+    const showNewWorkoutCardHandler = (event) => {
+        event.preventDefault();
+        setShowNewWorkoutCard(true);
+    }
+
+    const hideNewWorkoutCardHandler = () => {
+        setShowNewWorkoutCard(false);
+    }
+
+    const workoutstateUpdaterHandler = () => {
+        setWorkoutStateupdater(workoutStateUpdater + 1);
+    }
+
 
     const fetchWorkouts = async () => {
         try{
@@ -54,16 +72,21 @@ const WorkoutPlanDisplay = (props) => {
     
     useEffect(() => {
         fetchWorkouts();
-    }, []);
+    }, [workoutStateUpdater]);
 
     return(
         <Fragment>
-        
+        {showNewWorkoutCard && 
+            <NewWorkoutCard 
+                hideNewWorkoutCardHandler={hideNewWorkoutCardHandler}
+                workoutstateUpdaterHandler={workoutstateUpdaterHandler}
+            />}
         <div className={classes.cardEdit}>
         <Card>
+            <button onClick={showNewWorkoutCardHandler}>Create Workout</button>
             <section className={classes.workouts}>
                 <ul >
-                {workoutList}
+                    {workoutList}
                 </ul>
             </section>
             

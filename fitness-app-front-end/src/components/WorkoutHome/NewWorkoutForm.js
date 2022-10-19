@@ -24,6 +24,7 @@ const NewWorkoutCard = (props) => {
                 }
 
             )
+            props.workoutstateUpdaterHandler();
             if(!response.ok){
                 throw new Error('Request Failed');
             }
