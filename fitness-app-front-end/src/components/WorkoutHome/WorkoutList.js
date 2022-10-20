@@ -33,8 +33,18 @@ const WorkoutList = (props) => {
 
     return(
         <Fragment>
-        {displayModal && <ExerciseDisplay hideExerciseModalHandler={hideExerciseModal} workoutId={props.workoutId}/>}
-        {displayDeletionModal && <ConfirmDeleteModal hideDisplayDeletionModal={hideDisplayDeletionModal}/>}
+        {displayModal && 
+            <ExerciseDisplay 
+                hideExerciseModalHandler={hideExerciseModal} 
+                
+                workoutId={props.workoutId}
+        />}
+        {displayDeletionModal && 
+        <ConfirmDeleteModal 
+            hideDisplayDeletionModal={hideDisplayDeletionModal}
+            workoutId={props.workoutId}    
+            workoutstateUpdaterHandler={props.workoutstateUpdaterHandler}
+        />}
         <div className={classes.inLineCards}>
         <div className={classes.button}>
             {deleteState && <button onClick={showDisplayDeletionModal} >X</button>}

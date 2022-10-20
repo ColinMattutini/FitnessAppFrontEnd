@@ -77,6 +77,7 @@ const WorkoutPlanDisplay = (props) => {
             workoutName = {workoutKey.workoutName}
             showExerciseModalHandler={props.showExerciseModalHandler}
             deleteState={deleteState}
+            workoutstateUpdaterHandler={workoutstateUpdaterHandler}
             />
     );
     
