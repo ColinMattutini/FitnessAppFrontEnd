@@ -23,10 +23,10 @@ const ExerciseList = (props) => {
 
                     <div className={classes.midhold}>       
                         <div className={classes.button_left}>
-                            <button>←</button>  
+                            <button onClick={props.exerciseListDecreaser}>←</button>  
                         </div>
                         <div className={classes.button_right}>
-                            <button>→</button>  
+                            <button onClick={props.exerciseListIncreaser}>→</button>  
                         </div>
                     </div>
 

@@ -28,6 +28,18 @@ const ExerciseModal = props => {
         setNewExercisePost(newExercisePost + 1);
     }
 
+    const exerciseListIncreaser = () => {
+        if(exerciseIndex < exerciseLength - 1){
+           setExerciseIndex(exerciseIndex + 1);
+        }
+    }
+
+    const exerciseListDecreaser = () => {
+        if(exerciseIndex > 0){
+        setExerciseIndex(exerciseIndex - 1);
+        }
+    }
+
     const fetchExercises = async () => {
         
         const response = await fetch(
@@ -69,6 +81,8 @@ const ExerciseModal = props => {
             exerciseName = {exerciseKey.exerciseName}
             sets = {exerciseKey.exerciseSets}
             reps = {exerciseKey.exerciseReps}
+            exerciseListDecreaser = {exerciseListDecreaser}
+            exerciseListIncreaser = {exerciseListIncreaser}
             />
     )
 
@@ -79,17 +93,7 @@ const ExerciseModal = props => {
         console.log(exerciseLength);
     }
 
-    const exerciseListIndexer = () => {
-        if(exerciseIndex < exerciseLength - 1){
-           setExerciseIndex(exerciseIndex + 1);
-        }
-    }
-
-    const exerciseListDecreaser = () => {
-        if(exerciseIndex > 0){
-        setExerciseIndex(exerciseIndex - 1);
-        }
-    }
+    
 
     useEffect(() => {
         
@@ -120,7 +124,7 @@ const ExerciseModal = props => {
             <button onClick={fetchExercises}>Exercise Fetch Test</button>
             <button onClick={testExercisesString}>Print Exercises</button>
             <button onClick={exerciseListDecreaser}>Previous</button>
-            <button onClick={exerciseListIndexer}>Next</button>
+            <button onClick={exerciseListIncreaser}>Next</button>
             
             
         </Modal>
