@@ -4,7 +4,7 @@ import FoodListing from './FoodListing.js';
 import { useState, useEffect } from "react";
 import Card from "../UI/Card";
 import AuthContext from "../../context/user-auth";
-import DonutChart from "../Charts/DonutChart";
+import DonutChart from "./Charts/DonutChart";
 import DateFilter from "./Filter/DateFilter";
 
 const Food = () => {
@@ -87,23 +87,27 @@ const Food = () => {
 
     return(
     <Fragment>
-    <div className={classes.donutChart}>
-        <DonutChart foodArray={food}/>
-        
-    </div>
-    <div className={classes.cardEdit}>
-    <Card >
-        <section className={classes.food}>
-            <DateFilter 
-                selected={filteredDate}
-                onChangeFilter={filterChangerHandler}
-            />
-            <ul>
-                {foodList}
-            </ul>
+    <div className={classes.organizer}>
+        <div className={classes.donutChart}>
+            <DonutChart foodArray={food}/>
             
-        </section>
-    </Card>
+        </div>
+        <div className={classes.cardEdit}>
+            
+        <Card >
+            <section className={classes.food}>
+                <DateFilter 
+                    selected={filteredDate}
+                    onChangeFilter={filterChangerHandler}
+                />
+                <ul>
+                    {foodList}
+                </ul>
+                
+            </section>
+        </Card>
+        
+        </div>
     </div>
     </Fragment>
 

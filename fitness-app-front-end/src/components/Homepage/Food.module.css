@@ -10,23 +10,50 @@
     
 } */
 
-.cardEdit{
-  /* margin: auto; */
-  max-width: 60%;
-  margin-left: 40rem;
-  /* width: 95%; */
-  /* margin-left: 20%; */
   
-  
+
+.organizer{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
+
+.organizer .donutChart{
+  /* margin-bottom: 4rem; */
+  /* margin-left: 45%; */
+  /* margin: auto; */
+  
+  width:100%;
+  padding-left: 6rem;
+  padding-top: 8rem;
+  
+  
+ 
+  /* margin-top: 6rem; */
+}
+.organizer .cardEdit{
+    margin: auto;
+  
+    /* width: 90%; */
+    /* margin-left: 20%; */
+    /* padding-left: 15%;
+    padding-right: 3%; */
+    padding-top: 2rem;
+    padding-left:8rem;
+    padding-right:1rem;
+    min-width:85%;
+    
+}
+
+
 
 .food {
     /* max-width: 60rem; */
     
     
     /* margin-right: 20rem; */
-    max-height: 10rem;
-    
+    /* max-height: 10rem; */
+    max-height: 34vh;
     overflow: scroll;
     scrollbar-width: none;
     background-image: none;
@@ -45,8 +72,3 @@
     overflow: hidden;
   }
 
-  .donutChart{
-    /* margin-bottom: 4rem; */
-    margin-left: 45%;
-    margin-top: 6rem;
-  }
