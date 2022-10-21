@@ -17,7 +17,7 @@ const NavBar = () => {
     const calorieTrackerNavHandler = (event) => {
         event.preventDefault();
         authCtx.updatedStateHandler(250);
-        navigate('/homepage');
+        navigate('/calorietrackerpage');
     }
     return (
         <div className={classes.navbar}>

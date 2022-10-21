@@ -40,7 +40,7 @@ function App() {
 
         <Routes>
           
-          {authCtx.isLoggedIn && <Route exact path = "/homepage" element={<CalorieTrackerPage />} />}
+          {authCtx.isLoggedIn && <Route exact path = "/calorietrackerpage" element={<CalorieTrackerPage />} />}
           <Route exact path ="/" element={<WelcomePage />} />
           <Route exact path ="/authpage" element={<AuthPage/>} />
           <Route exact path ='/signuppage' element = {<SignUpPage />} />

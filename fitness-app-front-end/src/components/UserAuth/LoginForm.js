@@ -46,7 +46,7 @@ const LoginForm = (props) => {
                   console.log(data);
                   authCtx.login(data.access_token, data.username);
                   //authCtx.id(data.username);
-                  navigate('/homepage');
+                  navigate('/calorietrackerpage');
                   
                  
                 })
