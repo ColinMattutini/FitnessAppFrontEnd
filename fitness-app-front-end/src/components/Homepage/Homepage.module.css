@@ -1,23 +1,24 @@
 .homepage {
     display: flex;
-    max-width: 90%;
+    width: 100%;
+    min-height: 90vh;
     
    
 }
 
-.calorieSheet {
-    /* flex-direction: column; */
+/* .calorieSheet {
+    flex-direction: column; 
     position: absolute;
     padding: 4rem;
     max-width: 28rem;
-    margin-left: 4rem;
-    margin-top: 8rem;
+    margin-left: 7rem;
+    margin-top: 8rem; 
     height: 41.5rem;
     border-radius: 14px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
     background-color: #72c2f7;
     
-}
+} */
 
 
 
@@ -28,10 +29,10 @@
     
 } */
 
-.homepage h1{
+/* .homepage h1{
     margin-left: auto;
     margin-right: auto;
     font-weight: bolder;
     
-}
+} */
 

@@ -1,7 +1,7 @@
 import React from 'react';
-import Modal from '../UI/Modal';
+import Modal from '../../UI/Modal';
 import { useState } from 'react';
-import AuthContext from '../../context/user-auth';
+import AuthContext from '../../../context/user-auth';
 import { useContext } from 'react';
 
 const TotalCaloriesGoal = (props) => {

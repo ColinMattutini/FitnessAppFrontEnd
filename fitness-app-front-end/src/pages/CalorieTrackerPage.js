@@ -7,8 +7,8 @@ const CalorieTrackerPage = () => {
     return (
     <Fragment>
         <Header />
-        <NavBar />
         <Homepage />
+        <NavBar />
     </Fragment>
         );
 }

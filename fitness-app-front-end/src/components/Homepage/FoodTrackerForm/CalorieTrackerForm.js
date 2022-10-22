@@ -1,8 +1,8 @@
 import classes from './CalorieTrackerForm.module.css';
 import { useContext, useState } from 'react';
-import AuthContext from '../../context/user-auth.js';
+import AuthContext from '../../../context/user-auth.js';
 
-const CalorieTrackerForm = () => {
+const CalorieTrackerForm = (props) => {
 
     const authCtx = useContext(AuthContext);
     const [foodInput, setFoodInput] = useState('');
@@ -103,6 +103,7 @@ const CalorieTrackerForm = () => {
             <button className={classes.button}
             disabled={!formIsValid}
             >Submit</button>
+            
         
         </form>
 

@@ -2,9 +2,10 @@ import React, { Fragment, useContext, useEffect } from 'react';
 // import { useRef } from 'react';
 import { useState } from 'react';
 import classes from './DonutChart.module.css';
-import { PieChart, Pie, Tooltip, Cell } from 'recharts'; 
+import { PieChart, Pie, Tooltip, Cell, ResponsiveContainer} from 'recharts'; 
 import TotalCaloriesGoal from './TotalCaloriesGoal';
-import AuthContext from '../../context/user-auth';
+import AuthContext from '../../../context/user-auth';
+import { AutoSizer } from 'react-virtualized';
 
 
 const DonutChart = (props) => {
@@ -16,7 +17,6 @@ const DonutChart = (props) => {
             const response = await fetch(
                 "http://localhost:8080/api/caloriegoal/"+authCtx.UUID
             
-                
             );
             if(!response.ok) {
                 throw new Error ('Get Request Failed.');
@@ -77,8 +77,9 @@ const DonutChart = (props) => {
             return(
                 <div className="custom-tooltip"
                 style={{
+                    
                     backgroundColor: "#ffff",
-                    padding: "5px",
+                    padding: "1px",
                     border: "1px solid #cccc"
                 }}
                 >
@@ -89,17 +90,19 @@ const DonutChart = (props) => {
         return null;
     };
 
-
     return(
-        <Fragment>
-        <div className={classes.donutChart}>
-        <PieChart width={500} height={500}>
+        
+    <Fragment>
+       <ResponsiveContainer width="100%" height="75%">
+        <PieChart>
             <Pie 
+        
             data={calorieDifference}
             dataKey="calories"
-            outerRadius={200}
-            innerRadius={120}
-            fill="blue">
+            outerRadius={140}
+            innerRadius={80}
+            fill="blue"
+            >
 
             {calorieCount.map((entry, index) => (
                 <Cell 
@@ -111,9 +114,10 @@ const DonutChart = (props) => {
             </Pie>
         <Tooltip content={<CustomTooltip />} />
         </PieChart>
-
+        </ResponsiveContainer>
         
-        <div className={classes.label}>
+       
+    <div className={classes.label}>
             {/* <TotalCaloriesGoal /> */}
             <h1> Your Total Calories For Today Is: {totalCalories}</h1>
             {/* <input value={dailyCalorieGoal} onChange={calorieGoalHandler}/> */}
@@ -121,8 +125,6 @@ const DonutChart = (props) => {
             <button onClick={showCalorieGoalModalHandler}>Change Calorie Goal</button> 
             
         </div>
-        
-    </div>
     {showGoalModal && <TotalCaloriesGoal  hideCalorieGoalModalHandler={hideCalorieGoalModalHandler} 
         // calorieGoalHandler={calorieGoalHandler}
     />}
