@@ -1,0 +1,10 @@
+.fillheight{
+    min-height: 90vh;
+    display: flex;
+    padding-left: 5rem;
+    align-items: center;
+    justify-content: space-around;
+    
+    
+  }
+
