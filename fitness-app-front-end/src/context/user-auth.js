@@ -35,7 +35,8 @@ export const AuthContextProvider = (props) => {
     const logoutHandler = () => {
         setToken(null);
         setUUID(null);
-        localStorage.removeItem('token');
+        localStorage.clear();
+        // localStorage.removeItem('token');
     };
 
     const updateStateHandler = (number) => {
