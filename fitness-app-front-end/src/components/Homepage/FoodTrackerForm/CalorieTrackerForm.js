@@ -40,6 +40,7 @@ const CalorieTrackerForm = (props) => {
         setFoodInput('');
         setCalorieInput('');
         setDateInput('');
+        props.hideModalHandler();
     };
 
 

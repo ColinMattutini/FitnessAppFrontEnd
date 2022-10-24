@@ -6,7 +6,7 @@ const CalorieTrackerModal = (props) => {
 
         return(
             <Modal>
-                <CalorieTrackerForm />
+                <CalorieTrackerForm hideModalHandler={props.hideModalHandler}/>
                 <button onClick={props.hideModalHandler}>Close</button>
             </Modal>
         )

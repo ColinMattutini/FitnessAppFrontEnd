@@ -25,8 +25,8 @@ const Homepage = (props) => {
         {showModal && <CalorieTrackerModal hideModalHandler={hideModalHandler}/>}
         
         <div className={classes.homepage}>
-          <Food />
-          
+          <Food showModalHandler={showModalHandler}/>
+          {/* <button onClick={showModalHandler}>Show Entry</button> */}
           
           {/* <div className={classes.calorieSheet}>
           <h1>
@@ -38,7 +38,7 @@ const Homepage = (props) => {
           
         </div> 
         
-        <button onClick={showModalHandler}>Show Entry</button>
+        
         
       </Fragment>
     );

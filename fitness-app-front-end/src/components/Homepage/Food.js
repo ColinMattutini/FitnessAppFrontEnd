@@ -7,7 +7,7 @@ import AuthContext from "../../context/user-auth";
 import DonutChart from "./Charts/DonutChart";
 import DateFilter from "./Filter/DateFilter";
 
-const Food = () => {
+const Food = (props) => {
 
     let today = new Date();
     let dd = String(today.getDate()).padStart(2, '0');
@@ -95,6 +95,7 @@ const Food = () => {
         <div className={classes.cardEdit}>
             
         <Card >
+            <button onClick={props.showModalHandler}>Add Entry</button>
             <section className={classes.food}>
                 <DateFilter 
                     selected={filteredDate}
