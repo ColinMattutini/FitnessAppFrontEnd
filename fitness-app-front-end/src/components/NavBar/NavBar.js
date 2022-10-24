@@ -19,13 +19,24 @@ const NavBar = () => {
         authCtx.updatedStateHandler(250);
         navigate('/calorietrackerpage');
     }
+
+    const homepageNavHandler = (event) => {
+        event.preventDefault();
+        navigate('/homepage');
+    }
+
+    const goalpageNavHandler = (event) => {
+        event.preventDefault();
+        navigate('/goalpage');
+    }
+
     return (
         <div className={classes.navbar}>
             <div className={classes.holder}>
-            <button>Homepage</button>
+            <button onClick = {homepageNavHandler}>Homepage</button>
             <button onClick = {calorieTrackerNavHandler}>Calorie Tracker</button>
             <button onClick = {workoutNavHandler}>Workouts</button>
-            <button>Holder</button>
+            <button onClick = {goalpageNavHandler}>Goals</button>
             <button>Settings</button>
             </div>
             
