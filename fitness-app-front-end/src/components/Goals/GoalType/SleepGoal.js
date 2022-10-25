@@ -9,7 +9,7 @@ const SleepGoal = (props) => {
     // }
 
     return(
-        <Card>
+        <Card onClick={props.showSleepModalHandler}>
             <h1>Sleep Goal:</h1>
             <h2>{sleepGoal} hours</h2>
         </Card>

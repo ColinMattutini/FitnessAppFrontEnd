@@ -2,6 +2,9 @@ import React, { Fragment, useContext, useEffect, useState } from "react";
 import AuthContext from "../../context/user-auth";
 import Header from "../Header/Header";
 import NavBar from "../NavBar/NavBar";
+import SleepGoalModal from "./GoalModals/SleepGoalModal";
+import StepsGoalModal from "./GoalModals/StepsGoalModal";
+import WaterGoalModal from "./GoalModals/WaterGoalModal";
 import classes from "./Goals.module.css";
 import SleepGoal from "./GoalType/SleepGoal";
 import StepsGoal from "./GoalType/StepsGoal";
@@ -11,6 +14,33 @@ const Goals = () => {
 
     const authCtx = useContext(AuthContext);
     const [sleepGoal, setSleepGoal] = useState(0);
+    const [showSleepModal, setShowSleepModal] = useState(false);
+    const [showWaterModal, setShowWaterModal] = useState(false);
+    const [showStepsModal, setShowStepsModal] = useState(false);
+
+    const showSleepModalHandler = () => {
+        setShowSleepModal(true);
+    }
+
+    const hideSleepModalHandler = () => {
+        setShowSleepModal(false);
+    }
+
+    const showWaterModalHandler = () => {
+        setShowWaterModal(true);
+    }
+
+    const hideWaterModalHandler = () => {
+        setShowWaterModal(false);
+    }
+
+    const showStepsModalHandler = () => {
+        setShowStepsModal(true);
+    }
+
+    const hideStepsModalHandler = () => {
+        setShowStepsModal(false);
+    }
 
     const fetchGoals =  async () => {
         const response = await fetch(
@@ -45,10 +75,19 @@ const Goals = () => {
         <Fragment>
             <Header />
             <NavBar />
+            {showSleepModal && <SleepGoalModal hideSleepModalHandler={hideSleepModalHandler}/>}
+            {showStepsModal && <StepsGoalModal hideStepsModalHandler={hideStepsModalHandler}/>}
+            {showWaterModal && <WaterGoalModal hideWaterModalHandler={hideWaterModalHandler}/>}
             <div className={classes.fillheight}>
-                <SleepGoal sleepGoal = {sleepGoal} />
-                <StepsGoal />
-                <WaterGoal />
+                <SleepGoal 
+                    showSleepModalHandler={showSleepModalHandler} 
+                    sleepGoal = {sleepGoal} />
+                <StepsGoal 
+                    showStepsModalHandler={showStepsModalHandler}
+                />
+                <WaterGoal 
+                    showWaterModalHandler={showWaterModalHandler}
+                />
                
            </div>
         </Fragment>
