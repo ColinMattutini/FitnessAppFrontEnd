@@ -40,6 +40,7 @@ const SleepGoalModal = (props) => {
         updateGoalFetch(hours.current.value, "SLEEP");
         // updateGoalFetch(hours.current.value);
         console.log(hours.current.value);
+        localStorage.setItem("SLEEPGOAL", hours.current.value);
     }
 
 

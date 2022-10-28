@@ -12,6 +12,7 @@ const WaterGoalModal = (props) => {
         event.preventDefault();
         updateGoalFetch(water.current.value, "WATER");
         console.log(water.current.value);
+        localStorage.setItem("WATERGOAL", water.current.value);
     }
 
     return(

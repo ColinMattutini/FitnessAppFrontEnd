@@ -10,6 +10,7 @@ const StepsGoalModal = (props) => {
         event.preventDefault();
         updateGoalFetch(steps.current.value, "STEPS");
         console.log(steps.current.value);
+        localStorage.setItem("STEPSGOAL", steps.current.value);
     }
     return(
         <Modal>
