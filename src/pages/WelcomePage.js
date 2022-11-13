@@ -7,6 +7,7 @@ const WelcomePage = () => {
         <Fragment>
             <Header />
             <Welcome />
+            
         </Fragment>
 
     );

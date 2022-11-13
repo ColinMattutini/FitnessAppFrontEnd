@@ -1,0 +1,22 @@
+{
+  "name": "fitnessappfrontend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ColinMattutini/FitnessAppFrontEnd.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ColinMattutini/FitnessAppFrontEnd/issues"
+  },
+  "homepage": "https://github.com/ColinMattutini/FitnessAppFrontEnd#readme",
+  "dependencies": {
+    "react-virtualized": "^9.22.3"
+  }
+}

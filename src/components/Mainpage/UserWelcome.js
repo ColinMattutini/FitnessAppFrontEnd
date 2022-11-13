@@ -11,8 +11,9 @@ const UserWelcome = () => {
     const authCtx = useContext(AuthContext);
     
     const nameHolder = localStorage.getItem("firstName");
-    const [firstname, setFirstName] = useState(nameHolder);
     
+    const [firstname, setFirstName] = useState(nameHolder);
+    const [sleepGoal, setSleepGoal] = useState("");
     
     
     var today = new Date();
@@ -44,11 +45,35 @@ const UserWelcome = () => {
         
     }
 
+    const fetchGoals =  async () => {
+        const response = await fetch(
+            "http://localhost:8080/api/goal/"+authCtx.UUID,
+
+        )
+            const data = await response.json();
+            console.log(data);
+            var sleepGoal = data.filter(e => e.goalType === 'SLEEP');
+            var waterGoal = data.filter(e => e.goalType === 'WATER');
+            var stepsGoal = data.filter(e => e.goalType === 'STEPS');
+
+            var sleepNum = sleepGoal[0].goalNumber;
+            var waterNum = waterGoal[0].goalNumber;
+            var stepsNum = stepsGoal[0].goalNumber;
+            
+            localStorage.setItem("SLEEPGOAL", sleepNum);
+            setSleepGoal(sleepNum);
+            localStorage.setItem("WATERGOAL", waterNum);
+            localStorage.setItem("STEPSGOAL", stepsNum);
+            console.log("Goal fetch ran!");
+    }
+    
     useEffect(() => {
-        if(localStorage.getItem("firstName") === null){
+        if(localStorage.getItem("firstName") === null && localStorage.getItem("SLEEPGOAL") === null){
             fetchFirstName();
+            fetchGoals();
             
         }
+        
     })
 
     return(

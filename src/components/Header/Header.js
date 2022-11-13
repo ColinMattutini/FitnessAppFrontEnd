@@ -33,10 +33,10 @@ const Header = () => {
                 <h1>Fitness App</h1>
                 <div className={classes.button}>
                     <div className={classes.holder}>
-                {!authCtx.isLoggedIn && <LoginButton onClick={loginPageNavigate} value='Login'/>}
-                {!authCtx.isLoggedIn && <LoginButton onClick={signupPageNavigate} value='Sign-Up' />}
-                {authCtx.isLoggedIn && <LoginButton value='Logout' onClick={logoutPageNavigate}/>}
-                </div>
+                        {!authCtx.isLoggedIn && <LoginButton onClick={loginPageNavigate} value='Login'/>}
+                        {!authCtx.isLoggedIn && <LoginButton onClick={signupPageNavigate} value='Sign-Up' />}
+                        {authCtx.isLoggedIn && <LoginButton value='Logout' onClick={logoutPageNavigate}/>}
+                    </div>
                 </div>
         </header>
         </div>
