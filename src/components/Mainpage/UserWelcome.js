@@ -28,7 +28,7 @@ const UserWelcome = () => {
 
     const fetchFirstName = async () => {
         const response = await fetch(
-            'http://localhost:8080/api/users/'+authCtx.UUID,
+            'https://fitness-go.herokuapp.com/api/users/'+authCtx.UUID,
             {
                 headers: {
                     
@@ -47,7 +47,7 @@ const UserWelcome = () => {
 
     const fetchGoals =  async () => {
         const response = await fetch(
-            "http://localhost:8080/api/goal/"+authCtx.UUID,
+            "https://fitness-go.herokuapp.com/api/goal/"+authCtx.UUID,
 
         )
             const data = await response.json();

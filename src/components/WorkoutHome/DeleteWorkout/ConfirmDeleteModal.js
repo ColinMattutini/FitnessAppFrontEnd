@@ -8,7 +8,7 @@ const ConfirmDeleteModal = (props) => {
 
     const deleteWorkoutFetch = async () => {
         const response = await fetch(
-            'http://localhost:8080/api/user/'+authCtx.UUID+'/workout/'+props.workoutId,
+            'https://fitness-go.herokuapp.com/api/user/'+authCtx.UUID+'/workout/'+props.workoutId,
             {
                 method:"DELETE"
             }

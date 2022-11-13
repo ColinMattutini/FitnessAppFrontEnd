@@ -51,7 +51,7 @@ const SignUpForm = (props) => {
     const signUpFetch = (emailInput, passwordInput, firstNameInput, lastNameInput) => {
         fetch(
             //'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDp4Tq7CcT5TUe1a5pPDBjUlly9zE-K6dM',
-            'http://localhost:8080/api/user/save',
+            'https://fitness-go.herokuapp.com/api/user/save',
             {
                 method: 'POST',
                 body: JSON.stringify({

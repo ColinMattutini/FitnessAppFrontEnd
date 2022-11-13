@@ -44,7 +44,7 @@ const Goals = () => {
 
     const fetchGoals =  async () => {
         const response = await fetch(
-            "http://localhost:8080/api/goal/"+authCtx.UUID,
+            "https://fitness-go.herokuapp.com/api/goal/"+authCtx.UUID,
 
         )
             const data = await response.json();

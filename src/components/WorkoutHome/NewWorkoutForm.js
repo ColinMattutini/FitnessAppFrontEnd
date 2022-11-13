@@ -11,7 +11,7 @@ const NewWorkoutCard = (props) => {
     const fetchNewWorkout = async (workoutName) => {
         try{
             const response = await fetch(
-                "http://localhost:8080/api/user/"+authCtx.UUID+"/workout",
+                "https://fitness-go.herokuapp.com/api/user/"+authCtx.UUID+"/workout",
                 {
                     method: "POST",
                     body: JSON.stringify({

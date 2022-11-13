@@ -9,7 +9,7 @@ const useUpdateGoalFetch = () => {
         const updateGoalFetch =  async (goalNumber, goalType ) => {
         try{
             const response = fetch(
-                "http://localhost:8080/api/goal/"+authCtx.UUID,
+                "https://fitness-go.herokuapp.com/api/goal/"+authCtx.UUID,
                 {
                     method: "PUT",
                     body: JSON.stringify({

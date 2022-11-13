@@ -9,7 +9,7 @@ const LoginForm = (props) => {
 
     const userValidation = (email, password) => {
         fetch(
-            'http://localhost:8080/api/login',
+            'https://fitness-go.herokuapp.com/api/login',
             {
                 method: 'POST',
                 headers: {

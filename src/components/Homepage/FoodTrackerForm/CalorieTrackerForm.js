@@ -50,7 +50,7 @@ const CalorieTrackerForm = (props) => {
                 
                 const response = await fetch(
                     //'https://calorie-fitness-tracker-default-rtdb.firebaseio.com/foodItem.json',
-                    "http://localhost:8080/api/user/"+authCtx.UUID+"/foodEntry",
+                    "https://fitness-go.herokuapp.com/api/user/"+authCtx.UUID+"/foodEntry",
                     {
                         method: 'POST',
                         body: JSON.stringify({

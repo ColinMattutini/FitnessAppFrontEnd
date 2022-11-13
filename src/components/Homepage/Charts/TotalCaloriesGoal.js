@@ -17,7 +17,7 @@ const TotalCaloriesGoal = (props) => {
     const fetchCalorieGoalHandler = async (dailyCalorieGoal) => {
        try{
             const response = await fetch(
-                "http://localhost:8080/api/caloriegoal/"+authCtx.UUID,
+                "https://fitness-go.herokuapp.com/api/caloriegoal/"+authCtx.UUID,
                 {
                     method: 'PUT',
                     body: JSON.stringify({

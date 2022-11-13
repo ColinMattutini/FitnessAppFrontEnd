@@ -37,7 +37,7 @@ const NewExerciseForm = (props) => {
     const postNewExercise = async (workoutId, exerciseName, sets, reps) => {
         try{
         const response = await fetch(
-            "http://localhost:8080/api/user/"+authCtx.UUID+"/workout/"+props.workoutId+"/exercise",
+            "https://fitness-go.herokuapp.com/api/user/"+authCtx.UUID+"/workout/"+props.workoutId+"/exercise",
             {
                 method: "POST",
                 body: JSON.stringify({

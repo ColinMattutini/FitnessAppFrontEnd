@@ -42,8 +42,8 @@ const ExerciseModal = props => {
     const fetchExercises = async () => {
         
         const response = await fetch(
-            "http://localhost:8080/api/user/"+authCtx.UUID+"/workout/"+props.workoutId+"/exercise",
-            //"http://localhost:8080/api/user/cmmatt14@gmail.com/workout/23/exercise",
+            "https://fitness-go.herokuapp.com/api/user/"+authCtx.UUID+"/workout/"+props.workoutId+"/exercise",
+            //"https://fitness-go.herokuapp.com/api/user/cmmatt14@gmail.com/workout/23/exercise",
             {
                 methods: "GET"
             }

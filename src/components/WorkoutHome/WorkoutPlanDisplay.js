@@ -39,7 +39,7 @@ const WorkoutPlanDisplay = (props) => {
     const fetchWorkouts = async () => {
         try{
         const response = await fetch(
-            "http://localhost:8080/api/user/"+authCtx.UUID+"/workout",
+            "https://fitness-go.herokuapp.com/api/user/"+authCtx.UUID+"/workout",
             {
                 method: "GET",
                 headers: {
