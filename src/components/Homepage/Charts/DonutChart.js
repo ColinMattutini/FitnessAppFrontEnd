@@ -1,11 +1,10 @@
 import React, { Fragment, useContext, useEffect } from 'react';
-// import { useRef } from 'react';
 import { useState } from 'react';
 import classes from './DonutChart.module.css';
 import { PieChart, Pie, Tooltip, Cell, ResponsiveContainer} from 'recharts'; 
 import TotalCaloriesGoal from './TotalCaloriesGoal';
 import AuthContext from '../../../context/user-auth';
-import { AutoSizer } from 'react-virtualized';
+
 
 
 const DonutChart = (props) => {
