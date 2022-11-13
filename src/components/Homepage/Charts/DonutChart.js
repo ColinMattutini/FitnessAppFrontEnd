@@ -14,7 +14,10 @@ const DonutChart = (props) => {
     const fetchCalorieGoalHandler = async (calorie) => {
         try{
             const response = await fetch(
-                "https://fitness-go.herokuapp.com/api/caloriegoal/"+authCtx.UUID
+                "https://fitness-go.herokuapp.com/api/caloriegoal/"+authCtx.UUID,
+                {
+                    headers: {'Authorization': 'Bearer ' + localStorage.getItem("token")}
+                }
             
             );
             if(!response.ok) {

@@ -45,6 +45,9 @@ const Goals = () => {
     const fetchGoals =  async () => {
         const response = await fetch(
             "https://fitness-go.herokuapp.com/api/goal/"+authCtx.UUID,
+            {
+                headers: {'Authorization': 'Bearer ' + localStorage.getItem("token")}
+            }
 
         )
             const data = await response.json();

@@ -10,7 +10,8 @@ const ConfirmDeleteModal = (props) => {
         const response = await fetch(
             'https://fitness-go.herokuapp.com/api/user/'+authCtx.UUID+'/workout/'+props.workoutId,
             {
-                method:"DELETE"
+                method:"DELETE",
+                headers: {'Authorization': 'Bearer ' + localStorage.getItem("token")}
             }
         )
         props.workoutstateUpdaterHandler();
