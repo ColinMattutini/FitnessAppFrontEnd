@@ -37,7 +37,7 @@ const NavBar = () => {
             <button onClick = {calorieTrackerNavHandler}>Calorie Tracker</button>
             <button onClick = {workoutNavHandler}>Workouts</button>
             <button onClick = {goalpageNavHandler}>Goals</button>
-            <button>Settings</button>
+            {/* <button>Settings</button> */}
             </div>
             
         </div>
