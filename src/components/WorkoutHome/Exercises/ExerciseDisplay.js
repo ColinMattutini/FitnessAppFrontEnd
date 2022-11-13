@@ -1,4 +1,4 @@
-import React, { useState } from "react"; 
+import React from "react"; 
 import ExerciseModal from "./ExerciseModal";
 
 const ExerciseDisplay = (props) => {

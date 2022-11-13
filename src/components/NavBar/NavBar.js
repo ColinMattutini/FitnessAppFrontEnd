@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import AuthContext from '../../context/user-auth';
 import classes from './NavBar.module.css';
 

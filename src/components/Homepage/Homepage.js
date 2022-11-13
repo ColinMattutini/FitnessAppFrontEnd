@@ -1,5 +1,4 @@
-import { Fragment, useEffect, useState } from 'react';
-import CalorieTrackerForm from '../Homepage/FoodTrackerForm/CalorieTrackerForm';
+import { Fragment, useState } from 'react';
 import classes from './Homepage.module.css';
 import { useContext } from 'react';
 import AuthContext from '../../context/user-auth';

@@ -1,6 +1,6 @@
 import Modal from "../../UI/Modal.js";
 import useUpdateGoalFetch from "../../../hooks/useUpdateGoalFetch.js";
-import { useContext, useRef, useState } from "react";
+import { useContext, useRef } from "react";
 import AuthContext from "../../../context/user-auth.js";
 const SleepGoalModal = (props) => {
 

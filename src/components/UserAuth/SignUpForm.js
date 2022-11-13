@@ -3,7 +3,6 @@ import classes from './SignUpForm.module.css';
 import { useNavigate } from 'react-router-dom';
 import AuthContext from '../../context/user-auth';
 import LoginButton from '../UI/LoginButton';
-import Modal from '../UI/Modal';
 import SuccessSignUpModal from './SuccessSignUpModal';
 
 const SignUpForm = (props) => {

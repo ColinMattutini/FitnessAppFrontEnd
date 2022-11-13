@@ -1,5 +1,5 @@
 import Card from "../../UI/Card";
-import React, { useEffect } from "react";
+import React from "react";
 
 
 const SleepGoal = (props) => {

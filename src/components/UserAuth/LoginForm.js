@@ -1,7 +1,6 @@
-import Modal from '../UI/Modal';
 import classes from './LoginForm.module.css';
 import { useNavigate } from 'react-router-dom'
-import { useState, useContext, useRef, Fragment } from 'react'; 
+import { useState, useContext, Fragment } from 'react'; 
 import AuthContext from '../../context/user-auth.js'
 
 const LoginForm = (props) => {

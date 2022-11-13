@@ -4,7 +4,6 @@ import Modal from "../../UI/Modal";
 import { useState } from "react";
 import ExerciseList from "./ExerciseList";
 import classes from './ExerciseModal.module.css'
-import NewExerciseForm from "./NewExercise/NewExerciseForm";
 import NewExerciseDisplay from "./NewExercise/NewExerciseDisplay";
 
 const ExerciseModal = props => {
