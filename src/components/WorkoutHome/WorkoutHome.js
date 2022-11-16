@@ -9,7 +9,6 @@ const WorkoutHome = () => {
     return (
         <div className={classes.fillheight}>
             <WorkoutPlanDisplay />
-            {/* {displayModal && <ExerciseDisplay hideExerciseModalHandler={hideExerciseModal}/>} */}
         </div>
     )
 }

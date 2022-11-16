@@ -46,7 +46,7 @@ const LoginForm = (props) => {
                   authCtx.login(data.access_token, data.username);
                   localStorage.setItem("username", data.username);
                   //authCtx.id(data.username);
-                  navigate('/homepage');
+                  navigate('/calorietrackerpage');
                   
                  
                 })
@@ -55,43 +55,6 @@ const LoginForm = (props) => {
                 });
 
             };
-
-    // const userValidation = () => fetch
-    // ('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDp4Tq7CcT5TUe1a5pPDBjUlly9zE-K6dM', 
-    //     {
-    //         method: "POST",
-    //         body: JSON.stringify({
-    //             email: email,
-    //             password: password,
-    //             returnSecureToken: true
-    //         }),
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         }
-    //     }
-        
-    //     ).then(res => {
-    //         if (res.ok){
-    //             return res.json();
-    //           }
-    //           else{
-    //             return res.json().then(data => {
-    //               let errorMessage = 'Authentication Failed';
-    //               if(data && data.error && data.error.message){
-    //                errorMessage = data.error.message;
-    //             } 
-    //             alert(errorMessage);
-    //             throw new Error(errorMessage);
-    //             });
-    //           }
-    //         }).then(data => {
-    //           authCtx.login(data.idToken);
-    //           navigate('/homepage');
-             
-    //         })
-    //           .catch(error => {
-    //               alert('Something went wrong');
-    //         });
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -108,12 +71,8 @@ const LoginForm = (props) => {
     const submitHandler = (event) => {
         event.preventDefault();
         console.log(email, password);
-        // setEmail('');
-        // setPassword('');
         userValidation(email, password);
-        
-        // userInfo();
-        // props.hideLoginForm();
+
     
     };
 
@@ -141,8 +100,10 @@ const LoginForm = (props) => {
                     onChange={passwordHandler} 
                 />                
                 <button onClick={props.onClick}>Submit</button>
-                {/* <button onClick={props.hideLoginForm}>Close</button> */}
+                
                 <button onClick={homepageRedirectHandler}>Cancel</button>
+                <p>Feel free to use test@test.com</p>
+                <p>Password: test123456789</p>
                 <p onClick={signupRedirectHandler}>Don't have an account? Sign-up here!</p>
                 </div>
 

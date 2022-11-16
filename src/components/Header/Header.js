@@ -30,7 +30,7 @@ const Header = () => {
     return(
         <div>
         <header className={classes.header}>
-                <h1>Fitness App</h1>
+                
                 <div className={classes.button}>
                     <div className={classes.holder}>
                         {!authCtx.isLoggedIn && <LoginButton onClick={loginPageNavigate} value='Login'/>}

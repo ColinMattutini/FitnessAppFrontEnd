@@ -43,7 +43,6 @@ const ExerciseModal = props => {
         
         const response = await fetch(
             "https://fitness-go.herokuapp.com/api/user/"+authCtx.UUID+"/workout/"+props.workoutId+"/exercise",
-            //"https://fitness-go.herokuapp.com/api/user/cmmatt14@gmail.com/workout/23/exercise",
             {
                 methods: "GET",
                 headers: {'Authorization': 'Bearer ' + localStorage.getItem("token")}

@@ -4,8 +4,10 @@ import Modal from '../UI/Modal';
 const SuccessSignUpModal = () => {
     return(
         <Modal>
-            <h1>Successfully Signed Up!</h1>
-            <h3>Redirecting to Login Page</h3>
+            <div>
+                <h1>Successfully Signed Up!</h1>
+                <h3>Redirecting to Login Page</h3>
+            </div>
         </Modal>
     );
 };

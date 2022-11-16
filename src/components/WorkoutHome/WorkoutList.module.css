@@ -1,8 +1,15 @@
+.fullCard li{
+    list-style: none;
+}
+
 
 .inLineCards{
     display:flex;
+    cursor: pointer;
     
 }
+
+
 
 .button{
     margin:auto;

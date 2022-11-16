@@ -28,9 +28,6 @@ const NewWorkoutCard = (props) => {
             if(!response.ok){
                 throw new Error('Request Failed');
             }
-            
-        // authCtx.updatedStateHandler(40);
-        // const generatedId = data.name;
             } 
         catch (err) {
             

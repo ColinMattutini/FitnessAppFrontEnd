@@ -1,7 +1,7 @@
 .cardEdit{
     margin: auto;
     width: 100%;
-    /* margin-left: 20%; */
+
     padding-left: 8rem;
     padding-right: 2.5rem;
     padding-top: 4rem;
@@ -12,12 +12,8 @@
 }
 
 .workouts {
-    /* max-width: 60rem; */
-    
-    
-    /* margin-right: 20rem; */
     height: 65vh;
-    /* max-height: 10rem; */
+
     
     overflow: scroll;
     scrollbar-width: none;

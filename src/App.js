@@ -6,7 +6,6 @@ import CalorieTrackerPage from './pages/CalorieTrackerPage.js';
 import SignUpPage from './pages/SignUpPage.js';
 import WelcomePage from './pages/WelcomePage.js';
 import WorkoutPage from './pages/WorkoutPage.js';
-import MainHomePage from './pages/MainHomePage.js';
 import GoalPage from './pages/GoalPage.js';
 
 function App() {
@@ -18,11 +17,10 @@ function App() {
 
         <Routes>  
           {authCtx.isLoggedIn && <Route exact path = "/calorietrackerpage" element={<CalorieTrackerPage />} />}
-          <Route exact path ="/" element={!authCtx.isLoggedIn ? <WelcomePage /> : <Navigate to="/homepage" />} />
+          <Route exact path ="/" element={!authCtx.isLoggedIn ? <WelcomePage /> : <Navigate to="/calorietrackerpage" />} />
           <Route exact path ="/authpage" element={<AuthPage/>} />
           <Route exact path ='/signuppage' element = {<SignUpPage />} />
           {authCtx.isLoggedIn && <Route exact path = '/workoutpage' element = {<WorkoutPage />} />}
-          {authCtx.isLoggedIn && <Route exact path = '/homepage' element = {<MainHomePage />} />}
           {authCtx.isLoggedIn && <Route exact path = '/goalpage' element = {<GoalPage />} />}
         </Routes>
     </div>

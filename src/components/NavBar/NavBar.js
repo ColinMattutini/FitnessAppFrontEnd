@@ -33,7 +33,7 @@ const NavBar = () => {
     return (
         <div className={classes.navbar}>
             <div className={classes.holder}>
-            <button onClick = {homepageNavHandler}>Homepage</button>
+            {/* <button onClick = {homepageNavHandler}>Homepage</button> */}
             <button onClick = {calorieTrackerNavHandler}>Calorie Tracker</button>
             <button onClick = {workoutNavHandler}>Workouts</button>
             <button onClick = {goalpageNavHandler}>Goals</button>

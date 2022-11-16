@@ -4,41 +4,13 @@ import { useContext, useRef } from "react";
 import AuthContext from "../../../context/user-auth.js";
 const SleepGoalModal = (props) => {
 
-    // const [hours, setHours] = useState(0);
     const hours = useRef();
     const authCtx = useContext(AuthContext);
     const { updateGoalFetch }  = useUpdateGoalFetch();
-    
-
-    // const updateGoalFetch =  async (hours) => {
-    //     try{
-    //         const response = fetch(
-    //             "https://fitness-go.herokuapp.com/api/goal/"+authCtx.UUID,
-    //             {
-    //                 method: "PUT",
-    //                 body: JSON.stringify({
-    //                     goalNumber: hours,
-    //                     goalType: "SLEEP",
-    //                 }),
-    //                 headers: {
-    //                     'Content-Type': 'application/json',
-                       
-    //                 },
-    //             }
-    //         )
-            
-            
-    //     }
-    //     catch{
-    //         throw new Error("PUT REQUEST DID NOT WORK!");
-    //     }
-    //     }
-
 
     const formSubmissionHandler = (event) => {
         event.preventDefault();
         updateGoalFetch(hours.current.value, "SLEEP");
-        // updateGoalFetch(hours.current.value);
         console.log(hours.current.value);
         localStorage.setItem("SLEEPGOAL", hours.current.value);
     }

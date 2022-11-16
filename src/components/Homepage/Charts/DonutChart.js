@@ -59,7 +59,6 @@ const DonutChart = (props) => {
     
     
     for(const i in props.foodArray){
-        // console.log(props.foodArray[i].calories)
         totalCalories += (+props.foodArray[i].calories);
         calorieCount.push({
             id: props.foodArray[i].key,
@@ -121,14 +120,12 @@ const DonutChart = (props) => {
        
     <div className={classes.label}>
             {/* <TotalCaloriesGoal /> */}
-            <h1> Your Total Calories For Today Is: {totalCalories}</h1>
-            {/* <input value={dailyCalorieGoal} onChange={calorieGoalHandler}/> */}
+            <h1> Total Calories Today: {totalCalories}</h1>
             
             <button onClick={showCalorieGoalModalHandler}>Change Calorie Goal</button> 
             
         </div>
     {showGoalModal && <TotalCaloriesGoal  hideCalorieGoalModalHandler={hideCalorieGoalModalHandler} 
-        // calorieGoalHandler={calorieGoalHandler}
     />}
    
     </Fragment>

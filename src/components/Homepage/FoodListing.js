@@ -42,26 +42,37 @@ const FoodListing = (props) => {
             
         />}
         <li className={classes.food}>
-            <div>
+            <div className={classes.textdiv}>
+                <div className={classes.foodname}>
                 <h3>
                     {props.food}
                 </h3>
-                <div className={classes.description}>
+                </div>
+                
+                <div className={classes.date}>
                     {props.date}
                 </div>
+                
                 <div className={classes.calories}>
-                    {props.calories}
+                    Calories: {props.calories}
                 </div> 
-                <LoginButton 
-                    value={'Delete'}
-                    onClick={showDeleteModalHandler}
-                />
-                <LoginButton 
-                    value={'More Info'}
-                    onClick={showModalHandler}
-                    
-                />
+                
             </div>
+            <div className={classes.buttonplacement}>
+                <div className={classes.updatebutton}>
+                    <button 
+                        value={'More Info'}
+                        onClick={showModalHandler}      
+                    >Update Info</button>
+                </div>
+                <div className={classes.deletebutton}>
+                    <button 
+                        value={'Delete'}
+                        onClick={showDeleteModalHandler}
+                >Delete</button>
+                </div>
+                
+                </div>
             
         </li>
         </Fragment>

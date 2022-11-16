@@ -10,7 +10,6 @@
     
 } */
 
-  
 
 .organizer{
   display: flex;
@@ -72,3 +71,13 @@
     overflow: hidden;
   }
 
+
+  .cardEdit button{
+    cursor: pointer;
+    width: 15%;
+    border: 1px solid #0c0c0c;
+    background-color: #d4716e;
+    color: white;
+    border-radius: 20px;
+    padding: .5rem;
+  }

@@ -9,15 +9,79 @@
   
   .food h3 {
     margin: 0 0 0.25rem 0;
+    font-size: 35px;
   }
   
-  .description {
-    font-style: italic;
+  .date {
+    
+    font-size: 30px;
+  }
+
+  .foodname{
+    max-width: 40px;
   }
   
-  .price {
-    margin-top: 0.25rem;
-    font-weight: bold;
-    color: #ad5502;
-    font-size: 1.25rem;
+  .calories{
+    font-size: 30px;
+  }
+ 
+
+  .textdiv{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 60%;
+  }
+
+  .buttonplacement{
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    width: 20%;
+    
+    
+  }
+
+  .buttonplacement .deletebutton{
+    padding-top: 4px;
+  }
+
+  .buttonplacement .deletebutton button{
+    width: 100%;
+    height: 4vh;
+    cursor: pointer;
+    border: 1px solid #e6b873;
+    background-color: #f33e3e;
+    color: white;
+    border-radius: 20px;
+  }
+
+  .buttonplacement .deletebutton button:hover{
+    width: 100%;
+    height: 4vh;
+    cursor: pointer;
+    border: 1px solid #e6b873;
+    background-color: #ff0000;
+    color: white;
+    border-radius: 20px;
+  }
+
+  .buttonplacement .updatebutton button{
+    width: 100%;
+    height: 4vh;
+    cursor: pointer;
+    border: 1px solid #74a5d3;
+    background-color: #1037e7;
+    color: white;
+    border-radius: 20px;
+  }
+
+  .buttonplacement .updatebutton button:hover{
+    width: 100%;
+    height: 4vh;
+    cursor: pointer;
+    border: 1px solid #74a5d3;
+    background-color: #768cf0;
+    color: white;
+    border-radius: 20px;
   }

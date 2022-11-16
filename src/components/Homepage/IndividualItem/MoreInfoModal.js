@@ -24,7 +24,6 @@ const MoreInfoModal = (props) => {
     const updateItemFetch = async (calories, date) => {
         try{
         await fetch(
-            //'https://calorie-fitness-tracker-default-rtdb.firebaseio.com/foodItem/'+props.id+'.json',
             'https://fitness-go.herokuapp.com/api/user/'+authCtx.UUID+'/foodEntry/'+props.id,
             {
                 method: "PUT",
